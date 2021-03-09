@@ -1,0 +1,9 @@
+unamp f
+map . navigate next
+map , navigate previous 
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+set default-bg "#060606"
+
+set synctex true
+set synctex-editor-command "nvr --remote-silent %f -c %l"
