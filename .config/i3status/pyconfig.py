@@ -29,7 +29,10 @@ status.register("weather",
         backend=weathercom.Weathercom(location_code="PLXX0040", units="metric"))
 
 status.register("cpu_freq",
-        format="CPU: {avgg}GHz",)
+        format="{avgg}GHz",)
+
+status.register("cpu_usage",
+        format="CPU: {usage}%")
 
 status.register("mem",
         divisor = 1024**3,
