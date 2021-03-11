@@ -81,12 +81,6 @@ URxvt.tabbedex.bell-timeout: 0
  URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
  URxvt.copyCommand: xclip -i -selection clipboard
  URxvt.pasteCommand: xclip -o -selection clipboard
-! URxvt.keysym.M-c: perl:clipboard:copy
-! URxvt.keysym.M-v: perl:clipboard:paste
-! URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-! URxvt.keysym.M-Escape: perl:keyboard-select:activate
-! URxvt.keysym.M-s: perl:keyboard-select:search
-! URxvt.keysym.M-u: perl:url-select:select_next
- URxvt.urlLauncher: firefox
+ URxvt.urlLauncher: google-chrome 
  URxvt.underlineURLs: true
  URxvt.urlButton: 1s: troin/bash: special: cemmand not found

@@ -1,0 +1,11 @@
+maim
+xdotool
+xclip
+neovim
+i3 
+i3pystatus
+git
+curl
+ranger
+vlc-bin
+

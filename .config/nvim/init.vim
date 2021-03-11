@@ -34,6 +34,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'yggdroot/indentline'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 " change window title to what u are doing
@@ -63,10 +64,10 @@ let g:airline_theme='papercolor'
 hi Normal guibg=NONE ctermbg=NONE
 hi SpellBad cterm=underline
 
-set autoindent
+set smarttab
 set expandtab
 set shiftwidth=4
-set softtabstop=4
+set tabstop=4
 
 " Python
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

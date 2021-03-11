@@ -36,7 +36,7 @@ exec google-chrome
 # Set monitors properly 
 exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
 # Set baground image
-exec feh --bg-scale ~/Pictures/wall/pexels-joyston-judah-933054.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wp3010584-snow-night-wallpaper-hd.jpg
 
 mode "audio" {
    bindsym g exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
