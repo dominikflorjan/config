@@ -13,7 +13,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'easymotion/vim-easymotion'
 Plug 'chiel92/vim-autoformat'
 
-
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -24,6 +23,7 @@ Plug 'preservim/nerdcommenter'
 
 " Latex
 Plug 'lervag/vimtex'
+Plug 'sbdchd/neoformat'
 
 " Syntax 
 Plug 'w0rp/ale'
@@ -35,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'yggdroot/indentline'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'dag/vim-fish'
 call plug#end()
 
 " change window title to what u are doing
@@ -61,6 +62,7 @@ set number relativenumber
 colorscheme deus
 " Airline theme
 let g:airline_theme='papercolor'
+let g:airline#extensions#ale#enabled = 1
 hi Normal guibg=NONE ctermbg=NONE
 hi SpellBad cterm=underline
 
@@ -75,17 +77,26 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 " Plugins 
 "
+" Ale
+"let g:ale_fix_on_save = 1 
+"
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
-let g:vimtex_compiler_progname='nvr'
+let g:vimtex_syntax_conceal_default = 0
 let g:vimtex_view_method='zathura'
-set conceallevel=1
-let g:tex_conceal='abdmg'
+let g:vimtex_compiler_progname='nvr'
+"let g:vimtex_indent_enabled=1
+"let g:vimtex_format_enabled=1
+set conceallevel=0
+"let g:tex_conceal='abdmg'
 "let g:vimtex_syntax_conceal_default=0 " Conceal latex characters OFF
 
 " You complete me 
 " Hover toggle menu
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <leader>D <plug>(YCMHover)
+let g:ycm_global_ycm_extra_conf = '$HOME/.config/ycm/.ycm_extra_conf.py'
 
 "otwórz nerdtree na ctr n
 map <C-n> :NERDTreeToggle<cr>
