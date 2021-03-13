@@ -70,14 +70,14 @@ bindsym $mod+Shift+s exec --no-startup-id maim --select | xclip -selection clipb
 ### ------------------------------ SCREENS
 
 ### Scratchapd -- hiding windows, needs tweaks --- SCRATCHPAD
-## Make the currently focused window a scratchpad
-#bindsym $mod+Shift+minus move scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-## Show the first scratchpad window
-#bindsym $mod+minus scratchpad show
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
 
-## Show the sup-mail scratchpad window, if any.
-#bindsym $mod1+Shift+s [title="^Sup ::"] scratchpad show
+# Show the sup-mail scratchpad window, if any.
+bindsym mod1+Shift+plus [title="^Sup ::"] scratchpad show
 ### END Scratchpad
 #
 ##### ------------------------------------------- SCRATCHPAD
@@ -119,9 +119,6 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
  bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
@@ -129,6 +126,9 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+mod1+h focus parent focus left
+bindsym $mod+mod1+l focus parent focus right 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -261,9 +261,10 @@ bindsym $mod+r mode "resize"
 
 ### Turn off 
 mode "power" {
-    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym $mod+p exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym $mod+s exec --no-startup-id lock && systemctl suspend, mode "defaul"
+    bindsym $mod+r exec --no-startup-id systemctl reboot, mode "default"
 
-    #
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -272,6 +273,8 @@ mode "power" {
 
 bindsym $mod+Pause mode "power"
 
+# Polybar???
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
