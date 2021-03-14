@@ -11,3 +11,6 @@ set -U fish_user_paths /usr/local/texlive/2020/bin/x86_64-linux $fish_user_paths
 set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
+
+# Disable fish greeting
+set fish_greeting
