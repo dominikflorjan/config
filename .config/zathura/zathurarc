@@ -5,12 +5,10 @@ map K zoom out
 map R rotate
 map . navigate next
 map , navigate previous 
-unamp f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 
 set default-bg "#060606"
-
 
 set window-title-basename true
 set adjust-open "best-fit"

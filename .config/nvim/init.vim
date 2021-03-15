@@ -1,6 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -46,7 +43,6 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 call plug#end()
 
-
 " Remaps
 imap jj <Esc>:w<CR>
 
@@ -71,12 +67,10 @@ set spell spelllang=pl,en_us
 set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
-set nowrap "do not wrap lines
-augroup WrapLineInTeXFile "BUT do it for tex files 
-    autocmd!
-    autocmd FileType tex setlocal wrap
-augroup END
 set smartindent 
+set showbreak=>>
+set breakindent
+set wrap
 set smarttab
 set expandtab "Convert tabs to spaces 
 set shiftwidth=4
@@ -98,17 +92,13 @@ autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%,
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 " Plugins 
-"
-" Ale
-" let g:ale_fix_on_save = 1 
-"
+" Vimtex
 let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=0
 let g:vimtex_syntax_conceal_default = 0
-let g:vimtex_view_method='zathura'
 let g:vimtex_compiler_progname='nvr'
-set conceallevel=0
-
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 " You complete me 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -133,7 +123,7 @@ nnoremap <buffer> <leader>au :ArduinoUpload<CR>
 nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
 nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
 nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
-"
+
 " Airline theme
 let g:airline_theme='papercolor'
 let g:airline#extensions#ale#enabled = 1

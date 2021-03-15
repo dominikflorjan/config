@@ -1,6 +1,6 @@
 from i3pystatus import Status
-from i3pystatus.calendar import khal_calendar
 from i3pystatus.weather import weathercom
+from i3pystatus.weather import wunderground
 
 # status = Status(logfile="/home/dominik/var/i3pystatus.log")
 status = Status()
@@ -22,17 +22,29 @@ status.register(
     },
 )  #"background": "#00FF00" },)
 
-# status.register("calendar",
-# format="{title}, {humanize_remaining}",
-# update_interval=10,
-# backend=khal_calendar.Khal(config_path="/home/dominik/.config/khal/config",) #calendars="google_calendar_local")
-# )
+status.register(
+    'battery',
+    interval=5,
+    format='BAT: [{status} ]{percentage_design:.2f}% {consumption:.2f}W {remaining}',
+    alert=True,
+    alert_percentage=15,
+    status={
+        'DPL': 'DPL',
+        'CHR': 'CHR',
+        'DIS': 'DIS',
+        'FULL': '',
+    }
+)
 
-status.register("weather",
-                format="{condition}, {current_temp}{temp_unit}",
-                colorize=True,
-                backend=weathercom.Weathercom(location_code="PLXX0040",
-                                              units="metric"))
+status.register("backlight",
+        format="Brightness: {percentage}%")
+
+# status.register("weather",
+                # format="{condition}, {current_temp}{temp_unit} {update_error}",
+                # interval=900,
+                # colorize=True,
+                # backend=weathercom.Weathercom(location_code="210036ee3963854e507c1fdb804560b821aa8c0a25661de14efccf0c87f7f8c0",
+                                              # units="metric", update_error="fucc"))
 
 status.register(
     "cpu_freq",
