@@ -1,11 +1,13 @@
 maim
 xdotool
+feh
 xclip
 neovim
 i3 
 i3pystatus
-git
 curl
 ranger
 vlc-bin
-
+zathura
+fish
+python3-pip
