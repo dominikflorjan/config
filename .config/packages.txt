@@ -11,3 +11,14 @@ vlc-bin
 zathura
 fish
 python3-pip
+rxvt-unicode
+build-essential 
+cmake 
+vim-nox
+python3-dev
+mono-complete
+golang 
+nodejs
+default-jdk
+npm
+
