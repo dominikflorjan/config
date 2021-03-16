@@ -46,6 +46,15 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 call plug#end()
 
+" Tinkering with functions
+augroup latexFix
+    autocmd!
+    autocmd FileType tex call Fix()
+augroup END
+
+function! Fix()
+    echom 'called'
+endfunction
 
 " Remaps
 imap jj <Esc>:w<CR>
@@ -124,7 +133,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets="<c-n>"
 let g:UltiSnipsEditSplit="context"
-let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/plugged/vim-snippets/snippets"
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
+let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips"]
 
 " Arduino
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp

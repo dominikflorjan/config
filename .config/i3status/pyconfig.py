@@ -22,17 +22,11 @@ status.register(
     },
 )  #"background": "#00FF00" },)
 
-# status.register("calendar",
-# format="{title}, {humanize_remaining}",
-# update_interval=10,
-# backend=khal_calendar.Khal(config_path="/home/dominik/.config/khal/config",) #calendars="google_calendar_local")
-# )
-
-status.register("weather",
-                format="{condition}, {current_temp}{temp_unit}",
-                colorize=True,
-                backend=weathercom.Weathercom(location_code="PLXX0040",
-                                              units="metric"))
+# status.register("weather",
+                # format="{condition}, {current_temp}{temp_unit}",
+                # colorize=True,
+                # backend=weathercom.Weathercom(location_code="PLXX0040",
+                                              # units="metric"))
 
 status.register(
     "cpu_freq",
