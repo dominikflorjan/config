@@ -39,7 +39,7 @@ exec google-chrome --password-store=gnome
 # Set monitors properly 
 exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
 # Set baground image
-exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
+exec --no-startup-id feh --bg-scale $HOME/Pictures/pexels-lumn-167699.jpg
 
 mode "audio" {
    bindsym g exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
@@ -266,8 +266,9 @@ bindsym $mod+r mode "resize"
 ### Turn off 
 mode "power" {
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "defaul"
+    bindsym s exec --no-startup-id i3lock && systemctl suspend, mode "defaul"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym l exec --no-startup-id i3lock, mode "default"
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
@@ -276,6 +277,9 @@ mode "power" {
 }
 
 bindsym $mod+Escape mode "power"
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Polybar???
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

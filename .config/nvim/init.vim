@@ -80,6 +80,9 @@ set number relativenumber
 set noswapfile
 set nowrap "do not wrap lines
 set smartindent 
+set showbreak=>>
+set breakindent
+set wrap
 set smarttab
 set expandtab "Convert tabs to spaces 
 set shiftwidth=4
@@ -118,12 +121,13 @@ let g:vimtex_compiler_latexmk = {
     \   '-interaction=nonstopmode',
     \ ],
     \}
+" Vimtex
 let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=0
 let g:vimtex_syntax_conceal_default = 0
-let g:vimtex_view_method='zathura'
 let g:vimtex_compiler_progname='nvr'
-set conceallevel=0
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 
 " You complete me 
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -150,7 +154,7 @@ nnoremap <buffer> <leader>au :ArduinoUpload<CR>
 nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
 nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
 nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
-"
+
 " Airline theme
 let g:airline_theme='papercolor'
 let g:airline#extensions#ale#enabled = 1

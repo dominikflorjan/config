@@ -1,15 +1,7 @@
 from i3pystatus import Status
-from i3pystatus.calendar import khal_calendar
-from i3pystatus.weather import weathercom
 
 # status = Status(logfile="/home/dominik/var/i3pystatus.log")
 status = Status()
-
-# Displays clock like this:
-# Tue 30 Jul 11:59:46 PM KW31
-#                          ^-- calendar week
-# status.register("clock",
-# format="%a %-d %b %X W%V",)
 
 status.register(
     "clock",
@@ -22,11 +14,22 @@ status.register(
     },
 )  #"background": "#00FF00" },)
 
-# status.register("weather",
-                # format="{condition}, {current_temp}{temp_unit}",
-                # colorize=True,
-                # backend=weathercom.Weathercom(location_code="PLXX0040",
-                                              # units="metric"))
+status.register(
+    'battery',
+    interval=5,
+    format='BAT: [{status} ]{percentage_design:.2f}% {consumption:.2f}W {remaining}',
+    alert=True,
+    alert_percentage=15,
+    status={
+        'DPL': 'DPL',
+        'CHR': 'CHR',
+        'DIS': 'DIS',
+        'FULL': '',
+    }
+)
+
+status.register("backlight",
+        format="Brightness: {percentage}%")
 
 status.register(
     "cpu_freq",

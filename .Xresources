@@ -1,3 +1,5 @@
+Xft.dpi:180
+
 !
 URxvt.perl-ext: default,tabbedex
 
@@ -16,8 +18,10 @@ URxvt.tabbedex.bell-timeout: 0
 *.foreground: #93a1a1
 *.background: #141c21
 *.cursorColor: #afbfbf
-!urxvt*depth: 32
-!urxvt*background: rgba:0000/0000/0200/d900
+
+!Real transparency -- needs picom
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/d900
 
  black
  *.color0: #263640
