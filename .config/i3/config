@@ -27,12 +27,15 @@ hide_edge_borders smart_no_gaps
 
 focus_follows_mouse no
 
+# Get chrome to remember password
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+
 # Launch composite window manager, for st opacity 
 exec --no-startup-id picom -b
 
 exec --no-startup-id megasync
 
-exec google-chrome
+exec google-chrome --password-store=gnome
 # Set monitors properly 
 exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
 # Set baground image
@@ -54,7 +57,7 @@ bindsym $mod+m mode "audio"
 bindsym $mod+p exec urxvt -e ranger 
 
 # Run chrome
-bindsym $mod+g exec google-chrome
+bindsym $mod+g exec google-chrome --password-store=gnome
 
 ### --------------------------------- SCREENS
 # Screenshots
@@ -262,7 +265,7 @@ bindsym $mod+r mode "resize"
 ### Turn off 
 mode "power" {
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
-    bindsym s exec --no-startup-id lock && systemctl suspend, mode "defaul"
+    bindsym s exec --no-startup-id systemctl suspend, mode "defaul"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
 
     # back to normal: Enter or Escape or $mod+r

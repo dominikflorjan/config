@@ -1,6 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
@@ -46,6 +43,8 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 call plug#end()
 
+filetype plugin on
+
 " Tinkering with functions
 augroup latexFix
     autocmd!
@@ -81,10 +80,10 @@ set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
 set nowrap "do not wrap lines
-augroup WrapLineInTeXFile "BUT do it for tex files 
-    autocmd!
-    autocmd FileType tex setlocal wrap
-augroup END
+"augroup WrapLineInTeXFile "BUT do it for tex files 
+    "autocmd!
+    "autocmd FileType tex setlocal wrap
+"augroup END
 set smartindent 
 set smarttab
 set expandtab "Convert tabs to spaces 
@@ -111,6 +110,19 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 " Ale
 " let g:ale_fix_on_save = 1 
 "
+let g:vimtex_compiler_latexmk = {
+    \ 'build_dir' : './temp',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'hooks' : [],
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
 let g:vimtex_syntax_conceal_default = 0
