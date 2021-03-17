@@ -130,6 +130,7 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# change focus when u have multiple windows in split
 bindsym $mod+mod1+h focus parent focus left
 bindsym $mod+mod1+l focus parent focus right 
 
