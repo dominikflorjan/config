@@ -12,7 +12,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Git
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Text editing/All languages
@@ -80,10 +79,6 @@ set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
 set nowrap "do not wrap lines
-"augroup WrapLineInTeXFile "BUT do it for tex files 
-    "autocmd!
-    "autocmd FileType tex setlocal wrap
-"augroup END
 set smartindent 
 set smarttab
 set expandtab "Convert tabs to spaces 
