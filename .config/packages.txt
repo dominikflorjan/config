@@ -21,4 +21,4 @@ golang
 nodejs
 default-jdk
 npm
-
+clangd

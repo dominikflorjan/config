@@ -9,3 +9,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 config checkout
 ```
+
+Using fish shell in urxvt with tide or hydro prompt
+https://github.com/jorgebucaran/hydro
