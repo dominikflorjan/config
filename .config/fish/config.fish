@@ -13,5 +13,10 @@ set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
+set --global hydro_color_pwd 00bcd4  
+
+# Vim fish binding
+fish_vi_key_bindings
+
 # Disable fish greeting
-set fish_greeting
+# set fish_greeting
