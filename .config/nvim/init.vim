@@ -34,9 +34,6 @@ Plug 'sbdchd/neoformat'
 " Do i need that?
 Plug 'chiel92/vim-autoformat'
 
-" Syntax
-" Plug 'w0rp/ale'
-
 " Look and feel
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -52,16 +49,6 @@ call plug#end()
 
 filetype plugin on
 
-" Tinkering with functions
-" augroup latexFix
-    " autocmd!
-    " autocmd FileType tex call Fix()
-" augroup END
-"
-"" function! Fix()
-    " echom 'called'
-" endfunction
-
 " change window title to what u are doing
 set title
 set encoding=utf-8
@@ -70,8 +57,6 @@ set updatetime=300
 set colorcolumn=80
 set mouse=a
 syntax on
-" syntax spell toplevel
-" set spell spelllang=pl,en_us
 set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
@@ -107,8 +92,8 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 " Removes trailing spaces
 function TrimWhiteSpace()
-  %s/\s*$//
-  ''
+    %s/\s*$//
+    ''
 endfunction
 
 " Remaps
@@ -125,6 +110,9 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 " Plugins
 " Syntastic
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["tex"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -137,18 +125,18 @@ let g:NERDcompactSexyComs = 1
 "
 "
 let g:vimtex_compiler_latexmk = {
-    \ 'build_dir' : './temp',
-    \ 'callback' : 1,
-    \ 'continuous' : 1,
-    \ 'executable' : 'latexmk',
-    \ 'hooks' : [],
-    \ 'options' : [
-    \   '-verbose',
-    \   '-file-line-error',
-    \   '-synctex=1',
-    \   '-interaction=nonstopmode',
-    \ ],
-    \}
+            \ 'build_dir' : './temp',
+            \ 'callback' : 1,
+            \ 'continuous' : 1,
+            \ 'executable' : 'latexmk',
+            \ 'hooks' : [],
+            \ 'options' : [
+            \   '-verbose',
+            \   '-file-line-error',
+            \   '-synctex=1',
+            \   '-interaction=nonstopmode',
+            \ ],
+            \}
 " Vimtex
 let g:tex_flavor='latex'
 let g:vimtex_syntax_conceal_default = 0
@@ -176,7 +164,6 @@ let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_sn
 let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips"]
 
 " Arduino
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 nnoremap <buffer> <leader>am :ArduinoVerify<CR>
 nnoremap <buffer> <leader>au :ArduinoUpload<CR>
 nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
@@ -185,32 +172,32 @@ nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='papercolor'
 let g:airline#extensions#tabline#enabled = 1
 
 " Big coc config
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -227,13 +214,13 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+        call CocActionAsync('doHover')
+    else
+        execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -247,11 +234,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -277,12 +264,12 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
