@@ -13,3 +13,10 @@ config checkout
 Using fish shell in urxvt with tide or [hydro](https://github.com/jorgebucaran/hydro)
 
 Vim status bar needs powerline fonts and proper urxvt font set up
+```console
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts 
+./install.sh
+cd ..
+rm -rf fonts
+```
