@@ -34,7 +34,7 @@ Plug 'sbdchd/neoformat'
 " Do i need that?
 Plug 'chiel92/vim-autoformat'
 
-" Syntax 
+" Syntax
 " Plug 'w0rp/ale'
 
 " Look and feel
@@ -57,8 +57,8 @@ filetype plugin on
     " autocmd!
     " autocmd FileType tex call Fix()
 " augroup END
-" 
-" function! Fix()
+"
+"" function! Fix()
     " echom 'called'
 " endfunction
 
@@ -69,27 +69,28 @@ set hidden
 set updatetime=300
 set colorcolumn=80
 set mouse=a
-syntax on 
-syntax spell toplevel
-set spell spelllang=pl,en_us
+syntax on
+" syntax spell toplevel
+" set spell spelllang=pl,en_us
 set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
 set nobackup
 set nowrap "do not wrap lines
-set smartindent 
+set smartindent
 set showbreak=>>
 set breakindent
 set wrap
 set smarttab
-set expandtab "Convert tabs to spaces 
+set expandtab "Convert tabs to spaces
 set shiftwidth=4
-set softtabstop=4 
-set tabstop=4 
+set softtabstop=4
+set tabstop=4
 set incsearch "show seach results
+set scrolloff=8
 
-" Give more sace for displaying messages.
-set cmdheight=2
+" Give more space for displaying messages.
+set cmdheight=1
 
 " Strong shit with <leader>u to show \"diffs\" or just undo history
 set undodir=$HOME/.vim/undodir
@@ -97,12 +98,18 @@ set undofile
 
 " Color scheme and change spelling highlight
 colorscheme deus
-hi Normal guibg=NONE 
+hi Normal guibg=NONE
 hi SpellBad cterm=underline
 
 " Python
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
 
 " Remaps
 imap jj <Esc>:w<CR>
@@ -116,12 +123,8 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-" Plugins 
+" Plugins
 " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -154,7 +157,7 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-" You complete me 
+" You complete me
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Hover toggle menu
@@ -180,12 +183,12 @@ nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
 nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
 nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
 
-" Airline 
+" Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='minimalist'
+let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled = 1
 
-" Big coc config 
+" Big coc config
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
