@@ -5,6 +5,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'stevearc/vim-arduino'
 Plug 'easymotion/vim-easymotion'
 
+Plug 'scrooloose/syntastic'
+
 " FZF
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -115,6 +117,16 @@ nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 " Plugins 
+" Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
@@ -168,10 +180,10 @@ nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
 nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
 nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
 
-" Airline theme
-let g:airline_theme='papercolor'
-let g:airline#extensions#ale#enabled = 1
-
+" Airline 
+let g:airline_powerline_fonts = 1
+let g:airline_theme='minimalist'
+let g:airline#extensions#tabline#enabled = 1
 
 " Big coc config 
 inoremap <silent><expr> <TAB>

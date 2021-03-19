@@ -10,5 +10,6 @@ config config --local status.showUntrackedFiles no
 config checkout
 ```
 
-Using fish shell in urxvt with tide or hydro prompt
-https://github.com/jorgebucaran/hydro
+Using fish shell in urxvt with tide or [hydro](https://github.com/jorgebucaran/hydro)
+
+Vim status bar needs powerline fonts and proper urxvt font set up
