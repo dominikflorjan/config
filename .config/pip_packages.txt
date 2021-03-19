@@ -1,3 +1,4 @@
 psutil 
 i3ipc
 khal
+cython
