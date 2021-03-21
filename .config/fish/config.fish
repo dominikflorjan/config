@@ -18,5 +18,9 @@ set --global hydro_color_pwd 00bcd4
 # Fix not workign ctrl+f for autocmpletion
 bind -M insert \cf forward-char
 
-# Disable fish greeting
-# set fish_greeting
+# set custom fish greeting -- type this into terminal
+# function fish_greeting:
+    # fortune
+# end
+# 
+# funcsave fish_greeting
