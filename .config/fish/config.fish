@@ -15,8 +15,8 @@ set -x MANWIDTH 999
 
 set --global hydro_color_pwd 00bcd4  
 
-# fish_vi_key_bindings
-# fish_vi_key_bindings
+# Fix not workign ctrl+f for autocmpletion
+bind -M insert \cf forward-char
 
 # Disable fish greeting
 # set fish_greeting

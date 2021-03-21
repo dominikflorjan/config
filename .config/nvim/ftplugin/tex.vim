@@ -1,4 +1,5 @@
-setlocal wrap
+set wrap
+set linebreak
 
 syntax spell toplevel
 set spell spelllang=pl,en_us
