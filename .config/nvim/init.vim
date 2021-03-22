@@ -99,6 +99,8 @@ endfunction
 " Remaps
 imap jj <Esc>:w<CR>
 
+nnoremap <leader>sv :source %MYVIMRC<CR>
+
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -154,6 +156,7 @@ nmap <leader>D <plug>(YCMHover)
 
 "otwórz nerdtree na ctr n
 map <C-n> :NERDTreeToggle<cr>
+let g:NERDTreeWinSize=20
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
