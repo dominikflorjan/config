@@ -1,3 +1,5 @@
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 
 " General
@@ -5,7 +7,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'stevearc/vim-arduino'
 Plug 'easymotion/vim-easymotion'
 
-Plug 'scrooloose/syntastic'
+" Syntastic is so slow
+"Plug 'scrooloose/syntastic'
+" lets switch to ale to check it out
+Plug 'w0rp/ale'
 
 " FZF
 Plug 'ctrlpvim/ctrlp.vim'
@@ -112,20 +117,20 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 " Plugins
 " Syntastic
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "passive_filetypes": ["tex"] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"
+" let g:syntastic_mode_map = {
+    " \ "mode": "active",
+    " \ "passive_filetypes": ["tex"] }
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 1
+
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDcompactSexyComs = 1
-"
-"
+
+
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : './temp',
             \ 'callback' : 1,

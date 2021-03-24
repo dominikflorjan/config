@@ -4,7 +4,7 @@ alias :q="exit"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Sync my goodnotes folder, with verbose option using rclone
-alias sync_notes ='rclone sync -v google_drive:GoodNotes/ ./GoodNotes/'
+alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
 
 source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
 
