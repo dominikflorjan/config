@@ -9,7 +9,6 @@ alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes
 set PATH /home/dominik/.cargo/bin $PATH
 
 source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
-# source "$HOME/.cargo/env"
 
 # Add to PATH 
 set -U fish_user_paths /usr/local/texlive/2020/bin/x86_64-linux $fish_user_paths
@@ -24,6 +23,7 @@ set --global hydro_color_pwd 00bcd4
 
 bind \cc kill-whole-line repaint
 bind \cw history-search-backward
+bind \ch beginning-of-line
 
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
