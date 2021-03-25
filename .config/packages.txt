@@ -25,3 +25,4 @@ clangd
 playerctl
 xss-lock
 okular
+picom
