@@ -18,7 +18,10 @@ set -x MANWIDTH 999
 
 set --global hydro_color_pwd 00bcd4  
 
-# Fix not workign ctrl+f for autocmpletion
+bind \cc kill-whole-line repaint
+bind \cw history-search-backward
+
+# Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
 
 # set custom fish greeting -- type this into terminal

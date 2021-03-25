@@ -85,7 +85,7 @@ function TrimWhiteSpace()
 endfunction
 
 " Remaps
-imap jj <Esc>:w<CR>
+imap kj <Esc>
 
 nnoremap <leader>sv :source %MYVIMRC<CR>
 
