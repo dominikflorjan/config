@@ -24,3 +24,4 @@ npm
 clangd
 playerctl
 xss-lock
+okular
