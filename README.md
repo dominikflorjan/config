@@ -1,4 +1,4 @@
-# config
+# Config
 
 Place for all dots and rcs 
 
@@ -14,7 +14,9 @@ config checkout
 
 ## Shell
 
-Using fish shell in urxvt with tide or [hydro](https://github.com/jorgebucaran/hydro)
+Using fish shell in urxvt with [tide](https://github.com/IlanCosman/tide) or [hydro](https://github.com/jorgebucaran/hydro) prompt
+
+Fish 3.2.0 is a must
 
 ## Vim
 
@@ -34,3 +36,11 @@ rm -rf fonts
 curl linkhttps://rclone.org/install.sh | sudo bash
 ```
 
+## LSP support for neovim 
+
+Running neovim 0.5 for this to run
+
+### python completion 
+```
+sudo npm install -g pyright
+```

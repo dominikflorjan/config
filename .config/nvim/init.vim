@@ -1,6 +1,3 @@
-" For coc completion
-" let g:ale_disable_lsp = 1
-
 call plug#begin('~/.vim/plugged')
 
 " General
@@ -8,9 +5,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'stevearc/vim-arduino'
 Plug 'easymotion/vim-easymotion'
 
-" Syntastic is so slow
-"Plug 'scrooloose/syntastic'
-" lets switch to ale to check it out
+" For all things syntax 
 Plug 'w0rp/ale'
 
 " FZF
@@ -25,10 +20,6 @@ Plug 'raimondi/delimitmate'
 Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
 
-" Completion plugins
-" Plug 'valloric/youcompleteme'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Switching to neovim in built LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -39,6 +30,10 @@ Plug 'honza/vim-snippets'
 
 " Latex
 Plug 'lervag/vimtex'
+
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 
 " Look and feel
 Plug 'pangloss/vim-javascript'
@@ -61,6 +56,7 @@ let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
 
 lua require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 lua require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+lua require'lspconfig'.texlab.setup{on_attach=require'completion'.on_attach}
 
 " Give more space for displaying messages.
 set cmdheight=1
