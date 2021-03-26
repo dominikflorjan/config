@@ -6,9 +6,26 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Sync my goodnotes folder, with verbose option using rclone
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
 
-set PATH /home/dominik/.cargo/bin $PATH
+# Run Tensorrt docker image
+alias docker_nvidia='sudo docker run \
+            -it --gpus all --privileged \
+            --env="DISPLAY=:1" \
+            --env="QT_X11_NO_MITSHM=1" \
+            --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+            --env="XAUTHORITY=$XAUTH" \
+            --volume="$XAUTH:$XAUTH" \
+            --volume="$HOME/shared:/home/ue4/share:rw" \
+            --env="NVIDIA_VISIBLE_DEVICES=all" \
+            --env="NVIDIA_DRIVER_CAPABILITIES=all" \
+            --network=host \
+            nvcr.io/nvidia/tensorrt:20.09-py3'
 
-source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
+set PATH /home/dominik/.cargo/bin $PATH
+set PATH /usr/local/cuda-11.2/bin $PATH
+set LD_LIBRARY_PATH /usr/local/cuda-11.2/lib64 $PATH
+set PATH /usr/local/cuda-11.1/bin $PATH
+set LD_LIBRARY_PATH /usr/local/cuda-11.1/lib64 $PATH
+
 
 # Add to PATH 
 set -U fish_user_paths /usr/local/texlive/2020/bin/x86_64-linux $fish_user_paths
@@ -27,3 +44,4 @@ bind \ch beginning-of-line
 
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
+# source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"

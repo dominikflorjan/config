@@ -276,8 +276,8 @@ mode "power" {
 
 bindsym $mod+Escape mode "power"
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
 #polybar
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh

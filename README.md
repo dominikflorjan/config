@@ -18,6 +18,15 @@ Using fish shell in urxvt with [tide](https://github.com/IlanCosman/tide) or [hy
 
 Fish 3.2.0 is a must
 
+## Backlight control 
+
+use Light
+
+add user to videos group
+```
+sudo usermod -a -G video $USER
+```
+
 ## Vim
 
 Vim status bar needs powerline fonts and proper urxvt font set up
