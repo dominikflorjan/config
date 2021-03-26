@@ -47,7 +47,7 @@ curl linkhttps://rclone.org/install.sh | sudo bash
 
 ## LSP support for neovim 
 
-Running neovim 0.5 for this to run
+neovim >= 0.5 for this to work
 
 ### python completion 
 ```
