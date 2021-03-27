@@ -20,16 +20,16 @@ alias docker_nvidia='sudo docker run \
             --network=host \
             nvcr.io/nvidia/tensorrt:20.09-py3'
 
+
+
+# Add to PATH 
+set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
+
 set PATH /home/dominik/.cargo/bin $PATH
 set PATH /usr/local/cuda-11.2/bin $PATH
 set LD_LIBRARY_PATH /usr/local/cuda-11.2/lib64 $PATH
 set PATH /usr/local/cuda-11.1/bin $PATH
 set LD_LIBRARY_PATH /usr/local/cuda-11.1/lib64 $PATH
-
-
-# Add to PATH 
-set -U fish_user_paths /usr/local/texlive/2020/bin/x86_64-linux $fish_user_paths
-
 
 ### Universal variables
 set -U EDITOR nvim

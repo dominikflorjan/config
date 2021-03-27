@@ -55,6 +55,7 @@ black
 
 !! URxvt Appearance
 URxvt*font: xft:DejaVu Sans Mono for Powerline-12
+! URxvt*font: xft:Meslo LG S for Powerline-12
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
 URxvt.cursorBlink: true
@@ -68,6 +69,7 @@ URxvt.iso14755: false
 
 !! Copy Paste & Other Extensions
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.keysym.Shift-Control-V: xclip -o -selection clipboard
 URxvt.copyCommand: xclip -i -selection clipboard
 URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.urlLauncher: google-chrome 
