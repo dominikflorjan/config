@@ -10,4 +10,3 @@ set breakindentopt=shift:0,min:40,sbr
 set showbreak=>>
 
 command W w 
-
