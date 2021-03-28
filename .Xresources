@@ -69,9 +69,8 @@ URxvt.iso14755: false
 
 !! Copy Paste & Other Extensions
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.keysym.Shift-Control-V: xclip -o -selection clipboard
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.urlLauncher: google-chrome 
 URxvt.underlineURLs: true
 URxvt.urlButton: 1s: troin/bash: special: cemmand not found
