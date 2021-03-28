@@ -29,6 +29,7 @@ exec --no-startup-id megasync
 exec google-chrome --password-store=gnome
 # Set monitors properly 
 exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
+exec xrandr --output HDMI-A-0 --off
 # Set baground image
 exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 
@@ -104,6 +105,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+# floating_modifier button9
 
 # start a terminal
 bindsym $mod+Return exec urxvt
@@ -257,7 +259,7 @@ bindsym $mod+r mode "resize"
 ### Turn off 
 mode "power" {
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
-    bindsym s exec --no-startup-id i3lock --color=ff66cc && systemctl suspend, mode "defaul"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym l exec --no-startup-id i3lock -c 212121, mode "default"
 

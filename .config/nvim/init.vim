@@ -65,6 +65,12 @@ filetype plugin on
 " Very important to get completion to work properly
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
+" completion-nvim settings 
+let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_trigger_keyword_length = 3
+let g:completion_enable_auto_popup=1
+imap <silent> <c-p> <Plug>(completion_trigger)
+imap <tab> <Plug>(completion_smart_tab)
 
 lua << EOF 
 require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
@@ -72,7 +78,8 @@ require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
 require'lspconfig'.texlab.setup{on_attach=require'completion'.on_attach}
 EOF 
 
-let g:completion_enable_snippet = 'UltiSnips'
+
+
 
 " Sets 
 set title
@@ -97,12 +104,14 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set incsearch "show seach results
+set nohlsearch
 set scrolloff=8
 " Give more space for displaying messages.
 set cmdheight=1
 " Strong shit with <leader>u to show \"diffs\" or just undo history
 set undodir=$HOME/.vim/undodir
 set undofile
+set wildmenu
 
 " Color scheme and change spelling highlight
 colorscheme deus
