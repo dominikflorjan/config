@@ -26,7 +26,7 @@ exec --no-startup-id picom -b
 
 exec --no-startup-id megasync
 
-exec google-chrome --password-store=gnome
+exec --no-startup-id google-chrome --password-store=gnome
 # Set monitors properly 
 exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
 exec xrandr --output HDMI-A-0 --off
@@ -75,6 +75,14 @@ bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+
+# Autostart spotify and move it to scratchpad
+exec--no-startup-id spotify -name music
+for_window [class="Spotify"] move scratchpad
+bindsym $mod+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+
+# for_window [instance='terminal'] move to scratchpad
+bindsym mod1+u [instance="terminal"] scratchpad show 
 ### END Scratchpad
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -108,7 +116,7 @@ floating_modifier $mod
 # floating_modifier button9
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt -name terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -275,8 +283,8 @@ bindsym $mod+Escape mode "power"
 #### XPS #####
 
 # This conflicts with desktop sound keys but is ok on laptop
-# bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-# bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
 #### XPS END ####
 
@@ -289,5 +297,5 @@ bar {
     status_command python3 ~/.config/i3status/pyconfig.py
     position top
     workspace_buttons yes
-    tray_output primary 
+    # tray_output primary 
 }
