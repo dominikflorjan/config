@@ -1,8 +1,12 @@
 # I3 config file
 set $mod Mod4
 
+# Font
+font pango:DejaVu Sans Mono 11
+
+focus_follows_mouse no
+
 ### Everything gaps related ###
-# You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 3
 
 # Border colors
@@ -15,7 +19,9 @@ gaps outer 10
 hide_edge_borders smart_no_gaps
 ### gaps related ### 
 
-focus_follows_mouse no
+# Set monitors properly 
+exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
+exec xrandr --output HDMI-A-0 --off
 
 # Autostarts
 # Get chrome to remember password
@@ -27,25 +33,10 @@ exec --no-startup-id picom -b
 exec --no-startup-id megasync
 
 exec --no-startup-id google-chrome --password-store=gnome
-# Set monitors properly 
-exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
-exec xrandr --output HDMI-A-0 --off
 # Set baground image
 exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 
-mode "audio" {
-   bindsym g exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
-   bindsym s exec pacmd set-default-sink alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo, mode "default"
-
-   # Exit mode 
-   bindsym $mod+m mode "default"
-   bindsym Return mode "default" 
-   bindsym Escape mode "default"
-}
-
-bindsym $mod+m mode "audio"
-
-
+exec--no-startup-id spotify -name music
 # Switch between two recent windows with alt+tab 
 bindsym mod1+Tab workspace back_and_forth
 
@@ -55,6 +46,9 @@ bindsym mod1+p exec nautilus
 
 # Run chrome
 bindsym $mod+g exec google-chrome --password-store=gnome
+
+# start a terminal
+bindsym $mod+Return exec urxvt -name terminal
 
 ### --------------------------------- SCREENS
 # Screenshots
@@ -77,17 +71,12 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Autostart spotify and move it to scratchpad
-exec--no-startup-id spotify -name music
 for_window [class="Spotify"] move scratchpad
 bindsym $mod+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
 # for_window [instance='terminal'] move to scratchpad
 bindsym mod1+u [instance="terminal"] scratchpad show 
 ### END Scratchpad
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 11
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -114,9 +103,6 @@ bindsym XF86AudioPrev exec playerctl previous
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # floating_modifier button9
-
-# start a terminal
-bindsym $mod+Return exec urxvt -name terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -229,7 +215,6 @@ workspace 8 output DisplayPort-1
 workspace 9 output DisplayPort-1
 workspace 0 output DisplayPort-1
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -263,6 +248,18 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+mode "audio" {
+   bindsym g exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
+   bindsym s exec pacmd set-default-sink alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo, mode "default"
+
+   # Exit mode 
+   bindsym $mod+m mode "default"
+   bindsym Return mode "default" 
+   bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "audio"
 
 ### Turn off 
 mode "power" {
