@@ -49,12 +49,6 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 call plug#end()
 
-" " Find files using Telescope command-line sugar.
-" nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 " Using lua functions
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -67,18 +61,33 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
 " completion-nvim settings 
 let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_trigger_keyword_length = 3
+let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_popup=1
-imap <silent> <c-p> <Plug>(completion_trigger)
-imap <tab> <Plug>(completion_smart_tab)
+" imap <silent> <c-p> <Plug>(completion_trigger)
+" imap <tab> <Plug>(completion_smart_tab)
 
 lua << EOF 
-require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
-require'lspconfig'.texlab.setup{on_attach=require'completion'.on_attach}
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{on_attach=require'completion'.on_attach}
+  end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
 EOF 
 
 
+" require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+" lua require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+" lua require'lspconfig'.texlab.setup{on_attach=require'completion'.on_attach}
 
 
 " Sets 

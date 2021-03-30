@@ -20,7 +20,7 @@ hide_edge_borders smart_no_gaps
 ### gaps related ### 
 
 # Set monitors properly 
-exec xrandr --output DisplayPort-0 --right-of DisplayPort-1
+exec xrandr --output DisplayPort-1 --left-of DisplayPort-0
 exec xrandr --output HDMI-A-0 --off
 
 # Autostarts
@@ -280,9 +280,9 @@ bindsym $mod+Escape mode "power"
 #### XPS #####
 
 # This conflicts with desktop sound keys but is ok on laptop
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
-
+# bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
+# 
 #### XPS END ####
 
 #polybar
