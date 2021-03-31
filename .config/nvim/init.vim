@@ -60,9 +60,12 @@ filetype plugin on
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
 " completion-nvim settings 
+set shortmess+=c
 let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_popup=1
+let g:completion_matching_ignore_case =1
+let g:completion_menu_length=10
 " imap <silent> <c-p> <Plug>(completion_trigger)
 " imap <tab> <Plug>(completion_smart_tab)
 
@@ -83,12 +86,6 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 EOF 
-
-
-" require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
-" lua require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
-" lua require'lspconfig'.texlab.setup{on_attach=require'completion'.on_attach}
-
 
 " Sets 
 set title
