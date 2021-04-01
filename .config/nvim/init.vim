@@ -95,7 +95,6 @@ set updatetime=300
 set colorcolumn=80
 set mouse=a
 syntax on
-set clipboard=unnamedplus "enable clipboard
 set number relativenumber
 set noswapfile
 set nobackup
