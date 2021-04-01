@@ -91,12 +91,7 @@ cursor-scroll = ns-resize
 [bar/xps]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-;Not my thing
-; radius = 6.0
-; To Get nice centered modules
+height = 55
 fixed-center = true 
 
 background = ${colors.background}
@@ -105,47 +100,20 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-; Borders are transparent with picom 
-; border-size = 4
-; border-color = #00000000
-
 padding-left = 0
 padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = 'MesloLGMDZ Nerd Font:pixelsize=10'
-; font-0 = Monospace:pixelsize=10
+font-0 = 'MesloLGMDZ Nerd Font:pixelsize=22'
 
-; font-0 = "Tamsyn:pixelsize=10;0"
-; font-1 = "Roboto:size=11:weight=bold;2"
-; font-2 = "Noto Sans:size=11;1"
-
-; defaults -- desgusten
-; font-0 = fixed:pixelsize=10;1
-; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-; font-2 = "Wuncon Siji:pixelsize=10;1"
-
-modules-left = bspwm i3 spotify
+modules-left = bspwm i3
 modules-center = mpd xwindow
-modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature date powermenu
+modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature_intel date powermenu
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -453,6 +421,26 @@ format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
 hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
+label = CPU: %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/temperature_intel]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 label = CPU: %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
