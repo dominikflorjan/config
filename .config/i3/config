@@ -39,6 +39,7 @@ exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 exec--no-startup-id spotify -name music
 # Switch between two recent windows with alt+tab 
 bindsym mod1+Tab workspace back_and_forth
+bindsym $mod+Tab exec rofi -show window
 
 # Run ranger 
 bindsym $mod+p exec urxvt -e ranger 
@@ -61,7 +62,6 @@ bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(d
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png 
-# Clipboard area
 bindsym $mod+Shift+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Move current window to scratchpad
