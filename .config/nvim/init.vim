@@ -8,6 +8,11 @@ Plug 'easymotion/vim-easymotion'
 " For all things syntax 
 Plug 'w0rp/ale'
 
+" Sit on tree
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/playground'
+
+" SEE EVERYTHING aka telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -21,7 +26,7 @@ Plug 'raimondi/delimitmate'
 Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
 
-" Switching to neovim in built LSP
+" NEOVIM LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
@@ -86,6 +91,8 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 EOF 
+
+lua require'nvim-treesitter.configs'.setup{highlight = {enable = true}}
 
 " Sets 
 set title
