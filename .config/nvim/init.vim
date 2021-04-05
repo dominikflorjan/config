@@ -61,6 +61,8 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 filetype plugin on
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Very important to get completion to work properly
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
@@ -71,8 +73,6 @@ let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_popup=1
 let g:completion_matching_ignore_case =1
 let g:completion_menu_length=10
-" imap <silent> <c-p> <Plug>(completion_trigger)
-" imap <tab> <Plug>(completion_smart_tab)
 
 lua << EOF 
 local function setup_servers()
@@ -177,10 +177,6 @@ colorscheme deus
 hi Normal guibg=NONE
 hi SpellBad cterm=underline
 
-" Python
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s*$//
@@ -237,13 +233,6 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-" You complete me
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" Hover toggle menu
-nmap <leader>D <plug>(YCMHover)
-" let g:ycm_global_ycm_extra_conf = '$HOME/.config/ycm/.ycm_extra_conf.py'
-
 "otwórz nerdtree na ctr n
 map <C-n> :NERDTreeToggle<cr>
 let g:NERDTreeWinSize=20
@@ -254,7 +243,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsListSnippets="<c-n>"
 let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
-let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips"]
+let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips", "/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
 
 " Arduino
 nnoremap <buffer> <leader>am :ArduinoVerify<CR>

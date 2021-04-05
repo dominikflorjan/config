@@ -23,6 +23,8 @@ hide_edge_borders smart_no_gaps
 exec xrandr --output DisplayPort-1 --left-of DisplayPort-0
 exec xrandr --output HDMI-A-0 --off
 
+# Map caps to escape
+exec_always setxkbmap -layout pl -option caps:escape         
 
 # Get chrome to remember password
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
@@ -37,9 +39,7 @@ exec --no-startup-id google-chrome --password-store=gnome
 exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 
 exec--no-startup-id spotify -name music
-# Switch between two recent windows with alt+tab 
-bindsym mod1+Tab workspace back_and_forth
-bindsym $mod+Tab exec rofi -show window
+bindsym mod1+Tab exec rofi -show window
 
 # Run ranger 
 bindsym $mod+p exec urxvt -e ranger 
@@ -53,6 +53,7 @@ bindsym $mod+Return exec urxvt -name terminal
 
 # Floating Gwyddion
 for_window [class="Gwyddion"] floating enable
+for_window [class="atomicJ-gui-AtomicJ"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
@@ -176,6 +177,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace preV
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -210,7 +214,7 @@ workspace 6 output DisplayPort-1
 workspace 7 output DisplayPort-1
 workspace 8 output DisplayPort-1
 workspace 9 output DisplayPort-1
-workspace 0 output DisplayPort-1
+workspace 10 output DisplayPort-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

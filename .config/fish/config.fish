@@ -37,6 +37,7 @@ set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
+set -x NVIM_LISTEN_ADDRESS /tmp/mynvimserver
 set --global hydro_color_pwd 00bcd4  
 
 bind \cc kill-whole-line repaint
