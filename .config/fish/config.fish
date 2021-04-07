@@ -25,6 +25,7 @@ alias docker_nvidia='sudo docker run \
 # Add to PATH 
 set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
 set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli $PATH
+set PATH /home/dominik/programs/arduino-ide_2.0.0-beta.3_Linux_64bit $PATH
 
 set PATH /home/dominik/.cargo/bin $PATH
 set PATH /usr/local/cuda-11.2/bin $PATH
@@ -47,3 +48,5 @@ bind \ch beginning-of-line
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
 # source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
+#
+source /opt/ros/noetic/share/rosbash/rosfish 

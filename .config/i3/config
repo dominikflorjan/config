@@ -51,9 +51,10 @@ bindsym $mod+g exec google-chrome --password-store=gnome
 # start a terminal
 bindsym $mod+Return exec urxvt -name terminal
 
-# Floating Gwyddion
+# Floating windows
 for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
+for_window [class="Anki"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
