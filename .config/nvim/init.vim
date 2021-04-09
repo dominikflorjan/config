@@ -141,7 +141,7 @@ set encoding=utf-8
 set hidden
 set updatetime=300
 set colorcolumn=80
-set mouse=a
+set mouse=a "enable mouse
 syntax on
 set number relativenumber
 set noswapfile
@@ -176,10 +176,20 @@ function TrimWhiteSpace()
 endfunction
 
 " Remaps
+let mapleader=" "
+
 imap kj <Esc>
+
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+G
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
 nnoremap <leader>sv :source %MYVIMRC<CR>
 
+" better moving between splits
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -188,16 +198,6 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
-
-" Plugins
-" Syntastic
-" let g:syntastic_mode_map = {
-    " \ "mode": "active",
-    " \ "passive_filetypes": ["tex"] }
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 1
 
 " nerdcommenter
 let g:NERDSpaceDelims = 1
