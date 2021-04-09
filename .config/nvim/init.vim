@@ -1,10 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
 " General
-Plug 'scrooloose/nerdtree'
-Plug 'stevearc/vim-arduino'
-Plug 'easymotion/vim-easymotion'
-
 " For all things syntax 
 Plug 'w0rp/ale'
 
@@ -42,8 +38,7 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Look and feel
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
@@ -68,7 +63,6 @@ set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
 " completion-nvim settings 
 set shortmess+=c
-let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_trigger_keyword_length = 2
 let g:completion_enable_auto_popup=1
 let g:completion_matching_ignore_case =1
@@ -152,11 +146,9 @@ syntax on
 set number relativenumber
 set noswapfile
 set nobackup
-set nowrap "do not wrap lines
 set smartindent
 set showbreak=>>
 set breakindent
-set wrap
 set smarttab
 set expandtab "Convert tabs to spaces
 set shiftwidth=4
@@ -173,7 +165,7 @@ set undofile
 set wildmenu
 
 " Color scheme and change spelling highlight
-colorscheme deus
+colorscheme gruvbox
 hi Normal guibg=NONE
 hi SpellBad cterm=underline
 
@@ -233,10 +225,6 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-"otwórz nerdtree na ctr n
-map <C-n> :NERDTreeToggle<cr>
-let g:NERDTreeWinSize=20
-
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -245,14 +233,7 @@ let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
 let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips", "/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
 
-" Arduino
-nnoremap <buffer> <leader>am :ArduinoVerify<CR>
-nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
-nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
-nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
-
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
