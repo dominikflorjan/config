@@ -109,3 +109,4 @@ alias :q=exit
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 autoload -Uz compinit && compinit
+source /opt/ros/noetic/setup.zsh

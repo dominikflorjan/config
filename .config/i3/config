@@ -67,7 +67,7 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym $mod+Shift+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # Move current window to scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+Escape move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
@@ -107,8 +107,10 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
- bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show run
+
 
 # change focus
 bindsym $mod+h focus left
@@ -252,7 +254,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "audio" {
-   bindsym g exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
+   bindsym z exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
    bindsym s exec pacmd set-default-sink alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo, mode "default"
 
    # Exit mode 
