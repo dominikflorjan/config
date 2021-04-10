@@ -5,8 +5,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/dominik/.oh-my-zsh"
 
-export PATH='/usr/local/texlive/2020/bin/x86_64-linux':$PATH
+export PATH="/usr/local/texlive/2020/bin/x86_64-linux":$PATH
 
+alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -74,9 +76,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-completions)
-autoload -U compinit && compinit
-zmodload -i zsh/complist
+plugins=(git zsh-autosuggestions history-substring-search debian)
 
 source $ZSH/oh-my-zsh.sh
 
