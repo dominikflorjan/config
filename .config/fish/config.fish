@@ -3,7 +3,11 @@ alias :q="exit"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias ngit="env GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME nvim"
+# For working with config repo (bare)
+alias gvim="env GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME nvim"
+
+# For working with plugins
+alias pvim="nvim --cmd \"set rtp+=\"(pwd) ."
 
 # Sync my goodnotes folder, with verbose option using rclone
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'

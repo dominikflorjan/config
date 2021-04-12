@@ -125,6 +125,8 @@ format = <label>
 exec = python3 /home/dominik/.config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
+click-left = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%

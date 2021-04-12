@@ -1,6 +1,6 @@
 !Xft.dpi:180
 !
-URxvt.perl-ext: default,tabbedex
+URxvt.perl-ext: default
 !
 ! Tabbedex
 URxvt.tabbedex.new-button: 1
