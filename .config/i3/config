@@ -55,6 +55,7 @@ bindsym $mod+Return exec urxvt -name terminal
 for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
 for_window [class="Anki"] floating enable
+for_window [class="MEGAsync"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
@@ -73,7 +74,6 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-for_window [class="MEGAsync"] move scratchpad
 for_window [class="discord"] move scratchpad
 bindsym $mod+Shift+d [class="discord"] scratchpad show; [class="discord"] move position center
 for_window [class="Spotify"] move scratchpad
