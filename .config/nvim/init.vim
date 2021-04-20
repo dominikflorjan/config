@@ -37,10 +37,14 @@ Plug 'lervag/vimtex'
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+Plug 'akinsho/nvim-bufferline.lua'
 " Look and feel
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'hoob3rt/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'yggdroot/indentline'
 " i3 config syntax hi
@@ -49,6 +53,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dag/vim-fish'
 call plug#end()
 
+" Change leader key to spacebar
 let g:mapleader="\<Space>"
 
 " Using lua functions for telescope
@@ -137,12 +142,14 @@ EOF
 
 lua require'nvim-treesitter.configs'.setup{highlight = {enable = true}}
 
+lua require('lualine').setup{}
+
 " Sets 
 syntax on
 set title
 set encoding=utf-8
 set hidden
-set pumheight=10                        " Max length of popup menu
+set pumheight=30                        " Max length of popup menu
 set updatetime=300
 set colorcolumn=80
 set mouse=a                             " enable mouse

@@ -10,6 +10,11 @@ URxvt.tabbedex.tab-bg: #93a1a1
 URxvt.tabbedex.title-fg: #93a1a1
 URxvt.tabbedex.bell-timeout: 0
 !URxvt.tabbedex.tabbar-fg: #93a1a
+
+! Real transparency -- needs picom
+! URxvt*depth : 32
+! URxvt*background: rgba:0000/0000/0200/d900
+!
 ! Colorscheme
 
 ! special
@@ -17,11 +22,8 @@ URxvt.tabbedex.bell-timeout: 0
 *.background: #141c21
 *.cursorColor: #afbfbf
 
-!Real transparency -- needs picom
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/d900
 
-black
+! black
 *.color0: #263640
 *.color8: #4a697d
 
@@ -54,8 +56,9 @@ black
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt*font: xft:DejaVu Sans Mono for Powerline-12
-! URxvt*font: xft:Meslo LG S for Powerline-12
+! URxvt*font: xft:DejaVu Sans Mono for Powerline-12
+URxvt*font: xft:DejaVu Sans Mono Nerd Font:size=12 
+
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
 URxvt.cursorBlink: true
@@ -68,7 +71,7 @@ URxvt.depth: 24
 URxvt.iso14755: false
 
 !! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common: default
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.urlLauncher: google-chrome 

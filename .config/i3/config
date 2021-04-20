@@ -56,6 +56,7 @@ for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="MEGAsync"] floating enable
+for_window [class="Xcinit.tcl"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"

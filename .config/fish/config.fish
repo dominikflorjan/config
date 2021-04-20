@@ -26,6 +26,13 @@ alias docker_nvidia='sudo docker run \
             --network=host \
             nvcr.io/nvidia/tensorrt:20.09-py3'
 
+function mountICM
+    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/MoTe2 $argv;
+end
+
+function ok
+ okular $argv &; 
+end
 
 # Add to PATH 
 set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
@@ -33,6 +40,11 @@ set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli
 set PATH /home/dominik/programs/arduino-ide_2.0.0-beta.3_Linux_64bit $PATH
 
 set PATH /home/dominik/.cargo/bin $PATH
+
+set PATH /home/dominik/programs/qe-6.7/bin $PATH
+set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
+
+# Cuda on XPS
 set PATH /usr/local/cuda-11.2/bin $PATH
 set LD_LIBRARY_PATH /usr/local/cuda-11.2/lib64 $PATH
 set PATH /usr/local/cuda-11.1/bin $PATH
