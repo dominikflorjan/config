@@ -57,7 +57,7 @@ URxvt.tabbedex.bell-timeout: 0
 
 !! URxvt Appearance
 ! URxvt*font: xft:DejaVu Sans Mono for Powerline-12
-URxvt*font: xft:DejaVu Sans Mono Nerd Font:size=12 
+URxvt*font: xft:DejaVu Sans Mono Nerd Font:size=12, xft:Font Awesome 5 Free:style=Regular:size=12, xft:FontAwesome:size=12
 
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24

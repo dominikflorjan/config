@@ -142,7 +142,7 @@ EOF
 
 lua require'nvim-treesitter.configs'.setup{highlight = {enable = true}}
 
-lua require('lualine').setup{}
+lua require('lualine').setup{options = {theme = 'gruvbox_material'}}
 
 " Sets 
 syntax on
@@ -166,6 +166,7 @@ set softtabstop=4
 set tabstop=4
 set incsearch                           " show seach results
 set nohlsearch
+set noshowmode                          " hide current mode (line does it)
 set scrolloff=8
 " Give more space for displaying messages.
 set cmdheight=1

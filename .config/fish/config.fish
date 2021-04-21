@@ -34,6 +34,10 @@ function ok
  okular $argv &; 
 end
 
+function mount_smb
+    sudo mount -t cifs -o username=serverUserName //myServerIpAdress/sharename $argv;
+end
+
 # Add to PATH 
 set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
 set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli $PATH

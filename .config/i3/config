@@ -1,55 +1,48 @@
 # I3 config file
 set $mod Mod4
+set $alt Mod1 
 
 # Font
-font pango:DejaVu Sans Mono 11
+font pango:DejaVu Sans Mono Nerd Font 11
 
 focus_follows_mouse no
 
-### Everything gaps related ###
 for_window [class=".*"] border pixel 3
-
-# Border colors
 client.focused #00C1FF #00C1FF #000088 #00C1FF
 
 smart_gaps on
 gaps inner 10
 gaps outer 10
-
 hide_edge_borders smart_no_gaps
-### gaps related ### 
 
 # Set monitors properly 
-exec xrandr --output DisplayPort-1 --left-of DisplayPort-0
-exec xrandr --output HDMI-A-0 --off
+# exec --no-startup-id xrandr --output DisplayPort-0 --primary
+exec --no-startup-id xrandr --output DisplayPort-1 --left-of DisplayPort-0
+exec --no-startup-id xrandr --output HDMI-A-0 --off
 
 # Map caps to escape
 exec_always setxkbmap -layout pl -option caps:escape         
-
-# Get chrome to remember password
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
-
 # Launch composite window manager, for st opacity 
+exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id picom -b
-
 exec --no-startup-id megasync
-
 exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
 exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
-
 exec--no-startup-id spotify -name music
-bindsym mod1+Tab exec rofi -show window
 
+# Change lock screen
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
+# Network applet
+exec --no-startup-id nm-applet
+
+bindsym $alt+Tab exec rofi -show window
 # Run ranger 
-bindsym $mod+p exec urxvt -e ranger 
-bindsym mod1+p exec nautilus
-
-# Run chrome
+bindsym $mod+p exec alacritty -e ranger 
+bindsym $alt+p exec nautilus
 bindsym $mod+g exec google-chrome --password-store=gnome
-
-# start a terminal
-bindsym $mod+Return exec urxvt -name terminal
+bindsym $mod+Return exec alacritty
 
 # Floating windows
 for_window [class="Gwyddion"] floating enable
@@ -80,14 +73,8 @@ bindsym $mod+Shift+d [class="discord"] scratchpad show; [class="discord"] move p
 for_window [class="Spotify"] move scratchpad
 bindsym $mod+Shift+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
-bindsym mod1+u [instance="terminal"] scratchpad show 
+bindsym $alt+u [instance="terminal"] scratchpad show 
 ### END Scratchpad
-
-# Change lock screen
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
-
-# Network applet
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -122,8 +109,8 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # change focus when u have multiple windows in split
-bindsym $mod+mod1+h focus parent focus left
-bindsym $mod+mod1+l focus parent focus right 
+bindsym $mod+$alt+h focus parent focus left
+bindsym $mod+$alt+l focus parent focus right 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -143,16 +130,11 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
 bindsym $mod+b split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -168,11 +150,18 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-#
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace preV
+
+# workspace_auto_back_and_forth yes
+
+# bindsym $mod+Ctrl+greater move workspace to output right 
+# bindsym $mod+Ctrl+less move workspace to output left
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
+set $ws1 "1: Web"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -182,45 +171,50 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace preV
+set $ws11 "11"
+set $ws12 "12"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+F1 workspace $ws11 
+bindsym $mod+F2 workspace $ws12 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+F1 move container to workspace $ws11; workspace $ws11
+bindsym $mod+Shift+F2 move container to workspace $ws12; workspace $ws11
 #
 ## assign monitor to output
-workspace 1 output DisplayPort-0
-workspace 2 output DisplayPort-0
-workspace 3 output DisplayPort-0
-workspace 4 output DisplayPort-0
-workspace 5 output DisplayPort-0
-workspace 6 output DisplayPort-1
-workspace 7 output DisplayPort-1
-workspace 8 output DisplayPort-1
-workspace 9 output DisplayPort-1
-workspace 10 output DisplayPort-1
+workspace $ws1 output DisplayPort-0
+workspace $ws2 output DisplayPort-0
+workspace $ws3 output DisplayPort-0
+workspace $ws4 output DisplayPort-0
+workspace $ws5 output DisplayPort-0
+workspace $ws6 output DisplayPort-0
+workspace $ws7 output DisplayPort-1
+workspace $ws8 output DisplayPort-1
+workspace $ws9 output DisplayPort-1
+workspace $ws10 output DisplayPort-1
+workspace $ws11 output DisplayPort-1
+workspace $ws12 output DisplayPort-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
