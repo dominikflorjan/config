@@ -68,7 +68,7 @@ font-7 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular"
 ; font-1 = "Roboto:size=11:weight=bold;2"
 ; font-2 = "Noto Sans:size=11;1"
 
-modules-left = bspwm i3 spotify
+modules-left = bspwm i3
 modules-center = mpd xwindow
 modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature date
 
@@ -144,7 +144,7 @@ format-prefix-underline = ${colors.secondary}
 label-layout = %layout%
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
+label-indicatr-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
@@ -515,4 +515,4 @@ screenchange-reload = true
 margin-top = 5
 margin-bottom = 5
 
-; vim:ft=dosini
+; vim:ft=dosinio

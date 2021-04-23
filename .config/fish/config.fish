@@ -12,6 +12,9 @@ alias pvim="nvim --cmd \"set rtp+=\"(pwd) ."
 # Sync my goodnotes folder, with verbose option using rclone
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
 
+### SSH with alacritty
+alias sssh='TERM=xterm-256color ssh -X'
+
 # Run Tensorrt docker image
 alias docker_nvidia='sudo docker run \
             -it --gpus all --privileged \
