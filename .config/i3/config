@@ -17,20 +17,21 @@ hide_edge_borders smart_no_gaps
 
 # Set monitors properly 
 # exec --no-startup-id xrandr --output DisplayPort-0 --primary
-exec --no-startup-id xrandr --output DisplayPort-1 --left-of DisplayPort-0
-exec --no-startup-id xrandr --output HDMI-A-0 --off
+exec_always --no-startup-id xrandr --output DisplayPort-2 --left-of DisplayPort-0
+exec_always --no-startup-id xrandr --output DisplayPort-1 --right-of DisplayPort-0
+# exec --no-startup-id xrandr --output HDMI-A-0 --off
 
 # Map caps to escape
 exec_always setxkbmap -layout pl -option caps:escape         
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 
-exec --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id picom -b
 exec --no-startup-id megasync
 exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
-exec --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
-exec--no-startup-id spotify -name music
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
+exec --no-startup-id spotify -name music
 
 # Change lock screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
@@ -173,6 +174,8 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -187,6 +190,8 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 bindsym $mod+F1 workspace $ws11 
 bindsym $mod+F2 workspace $ws12 
+bindsym $mod+F3 workspace $ws13
+bindsym $mod+F4 workspace $ws14
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -200,7 +205,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 bindsym $mod+Shift+F1 move container to workspace $ws11; workspace $ws11
-bindsym $mod+Shift+F2 move container to workspace $ws12; workspace $ws11
+bindsym $mod+Shift+F2 move container to workspace $ws12; workspace $ws12
+bindsym $mod+Shift+F3 move container to workspace $ws13; workspace $ws13
+bindsym $mod+Shift+F4 move container to workspace $ws14; workspace $ws14
+
 #
 ## assign monitor to output
 workspace $ws1 output DisplayPort-0
@@ -215,6 +223,8 @@ workspace $ws9 output DisplayPort-1
 workspace $ws10 output DisplayPort-1
 workspace $ws11 output DisplayPort-1
 workspace $ws12 output DisplayPort-1
+workspace $ws13 output DisplayPort-2
+workspace $ws14 output DisplayPort-2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -250,17 +260,19 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-mode "audio" {
-   bindsym z exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
-   bindsym s exec pacmd set-default-sink alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo, mode "default"
+bindsym $mod+z exec --no-startup-id bash /home/dominik/.config/i3/change_audio.sh
 
-   # Exit mode 
-   bindsym $mod+z mode "default"
-   bindsym Return mode "default" 
-   bindsym Escape mode "default"
-}
-
-bindsym $mod+z mode "audio"
+# mode "audio" {
+   # bindsym z exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
+   # bindsym s exec pacmd set-default-sink alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo, mode "default"
+# 
+   # # Exit mode 
+   # bindsym $mod+z mode "default"
+   # bindsym Return mode "default" 
+   # bindsym Escape mode "default"
+# }
+# 
+# bindsym $mod+z mode "audio"
 
 ### Turn off 
 mode "power" {

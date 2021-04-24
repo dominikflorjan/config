@@ -156,6 +156,7 @@ set mouse=a                             " enable mouse
 set number relativenumber
 set noswapfile
 set nobackup
+set nowrap
 set smartindent
 set showbreak=>>
 set breakindent
