@@ -68,7 +68,7 @@ font-7 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular"
 ; font-1 = "Roboto:size=11:weight=bold;2"
 ; font-2 = "Noto Sans:size=11;1"
 
-modules-left = bspwm i3
+modules-left = bspwm i3 
 modules-center = mpd xwindow
 modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature date
 
@@ -196,7 +196,7 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
+label-focused-background = #002071
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -206,7 +206,7 @@ label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${self.label-focused-background}
+label-visible-background = ${colors.background-alt}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
@@ -419,7 +419,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
@@ -439,7 +439,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
@@ -459,7 +459,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}

@@ -13,7 +13,9 @@ alias pvim="nvim --cmd \"set rtp+=\"(pwd) ."
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
 
 ### SSH with alacritty
-alias sssh='TERM=xterm-256color ssh -X'
+alias ssh='TERM=xterm-256color /usr/bin/ssh -X'
+
+alias pip="pip3"
 
 # Run Tensorrt docker image
 alias docker_nvidia='sudo docker run \

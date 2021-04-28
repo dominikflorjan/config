@@ -161,7 +161,7 @@ handle_image() {
 
         ## PDF
          application/pdf)
-             pdftoppm -f 1 -l 1 \
+             pdftoppm -f 1 -l 2 \
                       -scale-to-x "${DEFAULT_SIZE%x*}" \
                       -scale-to-y -1 \
                       -singlefile \
