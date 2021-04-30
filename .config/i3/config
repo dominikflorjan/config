@@ -32,6 +32,7 @@ exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 exec --no-startup-id spotify -name music
+exec --no-startup-id discord
 
 # Change lock screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
@@ -39,8 +40,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
 exec --no-startup-id nm-applet
 
 bindsym $alt+Tab exec rofi -show window
-# Run ranger 
-bindsym $mod+p exec alacritty -e ranger 
+# Run ranger so you could use scratchpad shortcut
+# exec_always alacritty --title rangerTerm -e ranger
+bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
 bindsym $mod+g exec google-chrome --password-store=gnome
 bindsym $mod+Return exec alacritty
@@ -51,6 +53,7 @@ for_window [class="atomicJ-gui-AtomicJ"] floating enable
 # for_window [class="Anki"] floating enable
 for_window [class="MEGAsync"] floating enable
 for_window [class="Xcinit.tcl"] floating enable
+for_window [title="rangerTerm"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
@@ -73,6 +76,9 @@ for_window [class="discord"] move scratchpad
 bindsym $mod+Shift+d [class="discord"] scratchpad show; [class="discord"] move position center
 for_window [class="Spotify"] move scratchpad
 bindsym $mod+Shift+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+
+for_window [title="rangerTerm"] move scratchpad
+bindsym $mod+p [title="rangerTerm"] scratchpad show, resize set 75 ppt 75 ppt, [title="rangerTerm"] move position center
 
 bindsym $alt+u [instance="terminal"] scratchpad show 
 ### END Scratchpad

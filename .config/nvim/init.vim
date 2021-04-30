@@ -243,8 +243,8 @@ let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
 let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips", "/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
 
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
+" Airline -- thing of the past
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='luna'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#whitespace#enabled = 0
