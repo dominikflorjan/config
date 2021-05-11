@@ -35,6 +35,7 @@ height = 27
 ;offset-y = 1%
 ;Not my thing
 ; radius = 6.0
+
 ; To Get nice centered modules
 fixed-center = true 
 
@@ -43,10 +44,6 @@ foreground = ${colors.foreground}
 
 line-size = 3
 line-color = #f00
-
-; Borders are transparent with picom 
-; border-size = 4
-; border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -59,18 +56,10 @@ font-1 = "Siji"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;3"
-font-5 = "FontAwesome:style=Regular:pixelize=10"
-font-6 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular"
-font-7 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular"
 
-
-; font-0 = "Tamsyn:pixelsize=10;0"
-; font-1 = "Roboto:size=11:weight=bold;2"
-; font-2 = "Noto Sans:size=11;1"
-
-modules-left = bspwm i3 
-modules-center = mpd xwindow
-modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature date
+modules-left = i3
+modules-center = xwindow
+modules-right = soundDevice pulseaudio filesystem memory cpu eth temperature_amd temperature date
 
 tray-position = right
 tray-padding = 2
@@ -81,14 +70,11 @@ tray-padding = 2
 
 ;override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
-cursor-scroll = ns-resize
+cursor-scroll = pointer
 
 [bar/xps]
 monitor = ${env:MONITOR:}
@@ -110,14 +96,20 @@ module-margin-right = 2
 
 font-0 = 'MesloLGMDZ Nerd Font:pixelsize=22'
 
-modules-left = bspwm i3
-modules-center = mpd xwindow
+modules-left = i3
+modules-center = xwindow
 modules-right =  xbacklight pulseaudio filesystem memory cpu wlan eth battery temperature_amd temperature_intel date powermenu
 
 tray-position = right
 tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/soundDevice]
+type = custom/script
+interval = 1 
+exec = /home/dominik/.config/polybar/audio.sh
+click-right = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
 [module/spotify]
 type = custom/script
@@ -127,11 +119,11 @@ format = <label>
 exec = python3 /home/dominik/.config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
-click-left = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+click-left = i3-msg [class="Pavucontrol"] scratchpad show; [class="Pavucontrol"] move position center
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:60:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -159,6 +151,8 @@ label-mounted = DISK: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
+format-mounted-underline = ${colors.secondary}
+
 [module/bspwm]
 type = internal/bspwm
 
@@ -183,6 +177,10 @@ label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
+fuzzy-match = true
+
+ws-icon-0=1;
+ws-icon-default=
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
@@ -195,6 +193,7 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
+; label-focused = %icon% %name%
 label-focused = %name%
 label-focused-background = #002071
 label-focused-underline= ${colors.primary}
@@ -310,7 +309,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = %Y-%m-%d
 date-alt = " %Y-%m-%d"
@@ -326,8 +325,6 @@ label = %time% %date%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-click-middle = pavucontrol
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
@@ -352,6 +349,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
 
 [module/alsa]
 type = internal/alsa
@@ -446,7 +444,7 @@ format-warn-underline = ${self.format-underline}
 
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
 label = CPU: %temperature-c%
-label-warn = %temperature-c%
+label-warn = CPU: %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
@@ -466,7 +464,7 @@ format-warn-underline = ${self.format-underline}
 
 hwmon-path = /sys/devices/pci0000:00/0000:00:03.1/0000:26:00.0/0000:27:00.0/0000:28:00.0/hwmon/hwmon2/temp2_input
 label = GPU: %temperature-c%
-label-warn = %temperature-c%
+label-warn = GPU: %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 

@@ -19,7 +19,7 @@ hide_edge_borders smart_no_gaps
 # exec --no-startup-id xrandr --output DisplayPort-0 --primary
 exec_always --no-startup-id xrandr --output DisplayPort-2 --left-of DisplayPort-0
 exec_always --no-startup-id xrandr --output DisplayPort-1 --right-of DisplayPort-0
-# exec --no-startup-id xrandr --output HDMI-A-0 --off
+exec --no-startup-id xrandr --output HDMI-A-0 --off
 
 # Map caps to escape
 exec_always setxkbmap -layout pl -option caps:escape         
@@ -41,7 +41,7 @@ exec --no-startup-id nm-applet
 
 bindsym $alt+Tab exec rofi -show window
 # Run ranger so you could use scratchpad shortcut
-# exec_always alacritty --title rangerTerm -e ranger
+exec --no-startup-id alacritty --title rangerTerm -e ranger
 bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
 bindsym $mod+g exec google-chrome --password-store=gnome
@@ -53,6 +53,7 @@ for_window [class="atomicJ-gui-AtomicJ"] floating enable
 # for_window [class="Anki"] floating enable
 for_window [class="MEGAsync"] floating enable
 for_window [class="Xcinit.tcl"] floating enable
+for_window [class="Pavucontrol"] floating enable
 for_window [title="rangerTerm"] floating enable
 
 # Screenshots
@@ -75,13 +76,17 @@ bindsym $mod+minus scratchpad show
 for_window [class="discord"] move scratchpad
 bindsym $mod+Shift+d [class="discord"] scratchpad show; [class="discord"] move position center
 for_window [class="Spotify"] move scratchpad
-bindsym $mod+Shift+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+bindsym $mod+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
 for_window [title="rangerTerm"] move scratchpad
 bindsym $mod+p [title="rangerTerm"] scratchpad show, resize set 75 ppt 75 ppt, [title="rangerTerm"] move position center
 
 bindsym $alt+u [instance="terminal"] scratchpad show 
+
+for_window [class="Pavucontrol"] move scratchpad
+bindsym XF86Tools [class="Pavucontrol"] scratchpad show; [class="Pavucontrol"] move position center
 ### END Scratchpad
+
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -107,7 +112,6 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show run
-
 
 # change focus
 bindsym $mod+h focus left

@@ -41,15 +41,14 @@ Plug 'akinsho/nvim-bufferline.lua'
 " Look and feel
 Plug 'morhetz/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
-Plug 'yggdroot/indentline'
-" i3 config syntax hi
+Plug 'https://github.com/lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+
 Plug 'PotatoesMaster/i3-vim-syntax'
-" fish syntax hi
+
 Plug 'dag/vim-fish'
 call plug#end()
 
