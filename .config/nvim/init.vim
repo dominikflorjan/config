@@ -2,7 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " General
 " For all things syntax 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " Sit on tree
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -26,6 +26,8 @@ Plug 'mbbill/undotree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
+
+Plug 'folke/lua-dev.nvim'
 
 " Snips
 Plug 'SirVer/ultisnips'

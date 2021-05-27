@@ -57,7 +57,7 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;3"
 
-modules-left = i3
+modules-left = i3 spotify
 modules-center = xwindow
 modules-right = soundDevice pulseaudio filesystem memory cpu eth temperature_amd temperature date
 
@@ -109,7 +109,7 @@ cursor-scroll = ns-resize
 type = custom/script
 interval = 1 
 exec = /home/dominik/.config/polybar/audio.sh
-click-right = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+click-right = i3-msg [class="Pavucontrol"] scratchpad show, resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
 
 [module/spotify]
 type = custom/script
@@ -119,7 +119,7 @@ format = <label>
 exec = python3 /home/dominik/.config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
-click-left = i3-msg [class="Pavucontrol"] scratchpad show; [class="Pavucontrol"] move position center
+click-left = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
 [module/xwindow]
 type = internal/xwindow

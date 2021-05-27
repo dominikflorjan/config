@@ -21,18 +21,22 @@ exec_always --no-startup-id xrandr --output DisplayPort-2 --left-of DisplayPort-
 exec_always --no-startup-id xrandr --output DisplayPort-1 --right-of DisplayPort-0
 exec --no-startup-id xrandr --output HDMI-A-0 --off
 
-# Map caps to escape
+# Map caps to escape and right shift to right alt
 exec_always setxkbmap -layout pl -option caps:escape         
+# not working 
+exec_always xmodmap -e "keycode 62 = ISO_Level3_Shift"
+
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 
 exec_always --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id picom -b
+# exec --no-startup-id picom -b
 exec --no-startup-id megasync
 exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 exec --no-startup-id spotify -name music
 exec --no-startup-id discord
+exec --no-startup-id pavucontrol
 
 # Change lock screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
@@ -84,7 +88,7 @@ bindsym $mod+p [title="rangerTerm"] scratchpad show, resize set 75 ppt 75 ppt, [
 bindsym $alt+u [instance="terminal"] scratchpad show 
 
 for_window [class="Pavucontrol"] move scratchpad
-bindsym XF86Tools [class="Pavucontrol"] scratchpad show; [class="Pavucontrol"] move position center
+bindsym XF86Tools [class="Pavucontrol"] scratchpad show; resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
 ### END Scratchpad
 
 
