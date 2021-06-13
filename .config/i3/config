@@ -24,7 +24,7 @@ exec --no-startup-id xrandr --output HDMI-A-0 --off
 # Map caps to escape and right shift to right alt
 exec_always setxkbmap -layout pl -option caps:escape         
 # not working 
-exec_always xmodmap -e "keycode 62 = ISO_Level3_Shift"
+# exec_always xmodmap -e "keycode 62 = ISO_Level3_Shift"
 
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 

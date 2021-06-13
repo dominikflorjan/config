@@ -27,14 +27,11 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
+[bar/main]
 monitor = ${env:MONITOR:}
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
-;Not my thing
-; radius = 6.0
+; bottom = true
 
 ; To Get nice centered modules
 fixed-center = true 
@@ -57,12 +54,51 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;3"
 
-modules-left = i3 spotify
+modules-left = i3 
 modules-center = xwindow
-modules-right = soundDevice pulseaudio filesystem memory cpu eth temperature_amd temperature date
+modules-right = spotify soundDevice pulseaudio filesystem memory cpu eth temperature_amd temperature date
 
 tray-position = right
 tray-padding = 2
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+[bar/secondary]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 27
+; bottom = true
+
+fixed-center = true 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = 'DejaVuSansMono Nerd Font:pixelsize=10'
+font-1 = "Siji"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
+font-4 = "Font Awesome 5 Brands:pixelsize=10;3"
+
+modules-left = i3
+modules-center = xwindow
+modules-right = date
+
+;tray-position = right
+;tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -109,7 +145,7 @@ cursor-scroll = ns-resize
 type = custom/script
 interval = 1 
 exec = /home/dominik/.config/polybar/audio.sh
-click-right = i3-msg [class="Pavucontrol"] scratchpad show, resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
+click-left = i3-msg [class="Pavucontrol"] scratchpad show, resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
 
 [module/spotify]
 type = custom/script
@@ -123,7 +159,7 @@ click-left = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move po
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:60:...%
+label = %title:0:40:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -314,7 +350,7 @@ interval = 1
 date = %Y-%m-%d
 date-alt = " %Y-%m-%d"
 
-time = %H:%M 
+time = %H:%M:%S 
 time-alt = %H:%M:%S
 
 format-prefix = 

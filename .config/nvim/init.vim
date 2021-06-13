@@ -1,10 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-" General
-" For all things syntax 
-" Plug 'w0rp/ale'
-
-" Sit on tree
+" Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/playground'
 
@@ -24,8 +20,11 @@ Plug 'mbbill/undotree'
 
 " NEOVIM LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'kabouzeid/nvim-lspinstall'
+Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/completion-nvim'
+
+Plug 'liuchengxu/vim-which-key'
 
 Plug 'folke/lua-dev.nvim'
 
@@ -47,15 +46,20 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
-Plug 'https://github.com/lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 
 Plug 'PotatoesMaster/i3-vim-syntax'
 
 Plug 'dag/vim-fish'
 call plug#end()
 
+filetype plugin on
+
 " Change leader key to spacebar
-let g:mapleader="\<Space>"
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+set timeoutlen=500
 
 " Using lua functions for telescope
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -63,26 +67,59 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-filetype plugin on
-" completion-nvim settings 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Very important to get completion to work properly
-set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
-set shortmess+=c
-" let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_enable_auto_popup=1
-let g:completion_matching_ignore_case =1
-let g:completion_menu_length=10
+" " completion-nvim settings 
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" " Very important to get completion to work properly
+" set completeopt=menuone,noinsert,noselect
+" let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
+" set shortmess+=c
+" " let g:completion_enable_snippet = 'UltiSnips'
+" let g:completion_enable_auto_popup=1
+" let g:completion_matching_ignore_case =1
+" let g:completion_menu_length=10
+
+
+" compe setup 
+set completeopt=menuone,noselect
+
 
 lua << EOF 
+-- compe:
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+  };
+}
+
+-- LSP:
 local function setup_servers()
 require'lspinstall'.setup()
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{on_attach=require'completion'.on_attach}
+    --require'lspconfig'[server].setup{on_attach=require'completion'.on_attach}
+    require'lspconfig'[server].setup{}
 end
+
 end
 
 setup_servers()
@@ -139,7 +176,18 @@ if client.resolved_capabilities.document_highlight then
     ]], false)
 end
 end
+-- Lua-dev config
+local luadev = require("lua-dev").setup({
+  -- add any options here, or leave empty to use the default settings
+  -- lspconfig = {
+  --   cmd = {"lua-language-server"}
+  -- },
+})
+
+local lspconfig = require('lspconfig')
+lspconfig.sumneko_lua.setup(luadev)
 EOF 
+
 
 lua require'nvim-treesitter.configs'.setup{highlight = {enable = true}}
 
@@ -216,6 +264,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDcompactSexyComs = 1
 
 " Vimtex
+" let g:vimtex_compiler_engine ='lualatex'
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : './temp',
             \ 'callback' : 1,
@@ -223,6 +272,7 @@ let g:vimtex_compiler_latexmk = {
             \ 'executable' : 'latexmk',
             \ 'hooks' : [],
             \ 'options' : [
+            \   '-pdflatex=lualatex',
             \   '-verbose',
             \   '-file-line-error',
             \   '-synctex=1',
