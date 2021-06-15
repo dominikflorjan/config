@@ -35,7 +35,7 @@ exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
 exec --no-startup-id spotify -name music
-exec --no-startup-id discord
+# exec --no-startup-id discord
 exec --no-startup-id pavucontrol
 
 # Change lock screen

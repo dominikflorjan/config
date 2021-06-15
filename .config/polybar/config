@@ -145,7 +145,7 @@ cursor-scroll = ns-resize
 type = custom/script
 interval = 1 
 exec = /home/dominik/.config/polybar/audio.sh
-click-left = i3-msg [class="Pavucontrol"] scratchpad show, resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
+click-right = i3-msg [class="Pavucontrol"] scratchpad show, resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
 
 [module/spotify]
 type = custom/script
@@ -155,7 +155,7 @@ format = <label>
 exec = python3 /home/dominik/.config/polybar/scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
 format-underline = #1db954
 
-click-left = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+click-right = i3-msg [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 
 [module/xwindow]
 type = internal/xwindow
