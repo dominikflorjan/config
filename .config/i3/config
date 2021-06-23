@@ -21,19 +21,19 @@ exec_always --no-startup-id xrandr --output DisplayPort-2 --left-of DisplayPort-
 exec_always --no-startup-id xrandr --output DisplayPort-1 --right-of DisplayPort-0
 exec --no-startup-id xrandr --output HDMI-A-0 --off
 
-# Map caps to escape and right shift to right alt
+# Map caps to escape 
 exec_always setxkbmap -layout pl -option caps:escape         
-# not working 
+# not working right shift to right alt
 # exec_always xmodmap -e "keycode 62 = ISO_Level3_Shift"
 
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 
 exec_always --no-startup-id xrdb ~/.Xresources
-# exec --no-startup-id picom -b
+exec --no-startup-id picom -b
 exec --no-startup-id megasync
 exec --no-startup-id google-chrome --password-store=gnome
 # Set baground image
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/7285.jpg
+exec_always --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
 exec --no-startup-id spotify -name music
 # exec --no-startup-id discord
 exec --no-startup-id pavucontrol
@@ -54,7 +54,7 @@ bindsym $mod+Return exec alacritty
 # Floating windows
 for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
-# for_window [class="Anki"] floating enable
+for_window [class="Anki"] floating enable
 for_window [class="MEGAsync"] floating enable
 for_window [class="Xcinit.tcl"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -75,22 +75,23 @@ bindsym $mod+Shift+Escape move scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus scratchpad show, resize set 75 ppt 75 ppt, move position center
 
 for_window [class="discord"] move scratchpad
-bindsym $mod+Shift+d [class="discord"] scratchpad show; [class="discord"] move position center
+bindsym $mod+Shift+d [class="discord"] scratchpad show, move position center
 for_window [class="Spotify"] move scratchpad
-bindsym $mod+n [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+bindsym $mod+n [class="Spotify"] scratchpad show, move position center
 
 for_window [title="rangerTerm"] move scratchpad
-bindsym $mod+p [title="rangerTerm"] scratchpad show, resize set 75 ppt 75 ppt, [title="rangerTerm"] move position center
+bindsym $mod+p [title="rangerTerm"] scratchpad show, resize set 75 ppt 75 ppt, move position center
 
-bindsym $alt+u [instance="terminal"] scratchpad show 
+# for_window [class="Anki"] move scratchpad
+bindsym $mod+a [class="Anki"] scratchpad show, resize set 75 ppt 75 ppt, move position center
+
+bindsym $mod+u [class="Alacritty"] scratchpad show 
 
 for_window [class="Pavucontrol"] move scratchpad
 bindsym XF86Tools [class="Pavucontrol"] scratchpad show; resize set 50 ppt 60 ppt, [class="Pavucontrol"] move position center
-### END Scratchpad
-
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -112,9 +113,6 @@ floating_modifier $mod
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # change focus
@@ -161,7 +159,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -271,10 +269,10 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
 bindsym $mod+z exec --no-startup-id bash /home/dominik/.config/i3/change_audio.sh
+bindsym $mod+c exec --no-startup-id i3-msg resize set width 60 ppt; resize set height 60 ppt; move position center
 
 # mode "audio" {
    # bindsym z exec pacmd set-default-sink alsa_output.pci-0000_2a_00.4.analog-stereo, mode "default"
@@ -288,7 +286,7 @@ bindsym $mod+z exec --no-startup-id bash /home/dominik/.config/i3/change_audio.s
 # 
 # bindsym $mod+z mode "audio"
 
-### Turn off 
+### Power menu
 mode "power" {
     bindsym p exec --no-startup-id systemctl poweroff, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
@@ -300,7 +298,6 @@ mode "power" {
     bindsym Escape mode "default"
     bindsym $mod+Escape mode "default"
 }
-
 bindsym $mod+Escape mode "power"
 
 

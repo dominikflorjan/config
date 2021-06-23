@@ -227,7 +227,7 @@ set wildmenu
 
 " Color scheme and change spelling highlight
 colorscheme gruvbox
-hi Normal guibg=NONE
+hi Normal guibg=NONE ctermbg=NONE
 hi SpellBad cterm=underline
 
 " Removes trailing spaces
