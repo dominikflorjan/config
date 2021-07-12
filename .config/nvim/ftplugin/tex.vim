@@ -1,4 +1,3 @@
-syntax spell toplevel
 set spell spelllang=pl,en_us
 
 command W w 

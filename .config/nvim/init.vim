@@ -9,6 +9,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+Plug 'preservim/nerdtree'
+
 " Git
 Plug 'tpope/vim-fugitive'
 
@@ -39,6 +41,7 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'akinsho/nvim-bufferline.lua'
+
 " Look and feel
 Plug 'morhetz/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
@@ -46,9 +49,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
+Plug 'Mofiqul/vscode.nvim'
 
 Plug 'PotatoesMaster/i3-vim-syntax'
-
 Plug 'dag/vim-fish'
 call plug#end()
 
@@ -79,11 +82,13 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " let g:completion_matching_ignore_case =1
 " let g:completion_menu_length=10
 
-
 " compe setup 
 set completeopt=menuone,noselect
-
-
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 lua << EOF 
 -- compe:
 require'compe'.setup {
@@ -185,13 +190,29 @@ local luadev = require("lua-dev").setup({
 })
 
 local lspconfig = require('lspconfig')
-lspconfig.sumneko_lua.setup(luadev)
+
+require('lualine').setup{
+options = {theme = 'gruvbox_material'},
+--tabline = {
+--  lualine_a = {},
+--  lualine_b = {'branch'},
+--  lualine_c = {'filename'},
+--  lualine_x = {},
+--  lualine_y = {},
+--  lualine_z = {}
+--  }
+}
+
 EOF 
 
+lua require'nvim-treesitter.configs'.setup{highlight = {enable = true, disable = {"tex"}},}
 
-lua require'nvim-treesitter.configs'.setup{highlight = {enable = true}}
-
-lua require('lualine').setup{options = {theme = 'gruvbox_material'}}
+" lua require('lualine').setup{options = {theme = 'vscode'}}
+" Color scheme and change spelling highlight
+let g:vscode_style = "dark"
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
+hi SpellBad cterm=underline
 
 " Sets 
 syntax on
@@ -224,11 +245,11 @@ set cmdheight=1
 set undodir=$HOME/.vim/undodir
 set undofile
 set wildmenu
+set list
+set listchars=tab:>-,trail:^
 
-" Color scheme and change spelling highlight
-colorscheme gruvbox
-hi Normal guibg=NONE ctermbg=NONE
-hi SpellBad cterm=underline
+set splitbelow
+set splitright
 
 " Removes trailing spaces
 function TrimWhiteSpace()
@@ -246,7 +267,7 @@ nnoremap <leader>Y gg"+G
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-nnoremap <leader>sv :source %MYVIMRC<CR>
+nnoremap <leader>sv :source /home/dominik/.config/nvim/init.vim<CR>
 
 " better moving between splits
 nnoremap <leader>l :wincmd l<CR>
@@ -258,13 +279,25 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 " nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDcompactSexyComs = 1
 
 " Vimtex
-" let g:vimtex_compiler_engine ='lualatex'
+let g:vimtex_fold_enabled = 1
+let g:vimtex_fold_manual = 1
+let g:vimtex_fold_types = {
+       \ 'preamble' : {'enabled' : 0},
+       \ 'envs' : {
+       \   'blacklist' : ['figure', 'table'],
+       \ },
+       \}
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : './temp',
             \ 'callback' : 1,
@@ -286,16 +319,10 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-n>"
 let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
 let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips", "/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
-
-" Airline -- thing of the past
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme='luna'
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#whitespace#enabled = 0

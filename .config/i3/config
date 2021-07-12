@@ -29,9 +29,9 @@ exec_always setxkbmap -layout pl -option caps:escape
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 
 exec_always --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id picom -b
+# exec --no-startup-id picom -b
 exec --no-startup-id megasync
-exec --no-startup-id google-chrome --password-store=gnome
+exec --no-startup-id brave-browser --password-store=gnome
 # Set baground image
 exec_always --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
 exec --no-startup-id spotify -name music
@@ -48,7 +48,7 @@ bindsym $alt+Tab exec rofi -show window
 exec --no-startup-id alacritty --title rangerTerm -e ranger
 bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
-bindsym $mod+g exec google-chrome --password-store=gnome
+bindsym $mod+g exec brave-browser --password-store=gnome
 bindsym $mod+Return exec alacritty
 
 # Floating windows
@@ -56,14 +56,14 @@ for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="MEGAsync"] floating enable
-for_window [class="Xcinit.tcl"] floating enable
+# for_window [class="Xcinit.tcl"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="rangerTerm"] floating enable
 
 # Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/dominik/Pictures/screenshots/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/dominik/Pictures/screenshots/$(date)"
 
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
@@ -310,7 +310,7 @@ bindsym $mod+Escape mode "power"
 #### XPS END ####
 
 #polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar_my/launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
