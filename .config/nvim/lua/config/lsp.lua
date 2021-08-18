@@ -53,6 +53,15 @@ local on_attach = function(client, bufnr)
     end
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 -- LSPInstall config
 local function setup_servers()
   require'lspinstall'.setup() -- must be included
@@ -77,6 +86,7 @@ local function setup_servers()
 
     require'lspconfig'.latex.setup{
         on_attach = on_attach,
+        capabilities = capabilities,
     }
 
     require'lspconfig'.cpp.setup{

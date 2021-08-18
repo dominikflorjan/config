@@ -12,13 +12,14 @@ opt.completeopt = {'menuone', 'noselect'} -- for autocompletion menu
 -- opt.pumblend = 17 -- this is weird, opacity for popup menu
 opt.pumheight = 15 -- height of option menu
 
-opt.wildmode = {"longest", "list", "full"}
-opt.wildmode = opt.wildmode - "list"
-opt.wildmode = opt.wildmode + { "longest", "full" }
+opt.colorcolumn = {'90'}
 
-opt.wildoptions = "pum"
+-- opt.wildmode = {"longest", "list", "full"}
+-- opt.wildmode = opt.wildmode - "list"
+-- opt.wildmode = opt.wildmode + { "longest", "full" }
+-- opt.wildoptions = "pum"
 
-opt.updatetime = 1000
+opt.updatetime = 500
 opt.timeoutlen = 500
 opt.incsearch = true
 opt.showmatch = true
@@ -49,6 +50,24 @@ opt.expandtab = true
 opt.breakindent = true
 
 opt.undofile = true -- enable undofile
+
+opt.breakindent = true
+opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+opt.linebreak = true
+
+opt.formatoptions = opt.formatoptions
+    - 'a' -- no auto formatting
+    - 'o' -- O and o doesnt't trigger comments NOT WORKING
+    + 'c'
+    + 'q'
+    + 'r' -- continue comments when pressing enter
+
+--Map blankline
+vim.g.indent_blankline_char = '┊'
+vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+vim.g.indent_blankline_char_highlight = 'LineNr'
+vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Another way of setting things:
 -- vim.api.nvim_set_option('updatetime', 1000)
