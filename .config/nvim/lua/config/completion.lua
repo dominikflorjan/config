@@ -1,8 +1,8 @@
 require'compe'.setup {
     source = {
-        omni = {
-            filetypes = {'tex'},
-        },
+        -- omni = {
+            -- filetypes = {'tex'},
+        -- },
         path = true;
         buffer = true;
         calc = true;
