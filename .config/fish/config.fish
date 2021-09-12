@@ -1,5 +1,6 @@
 alias vim="nvim"
 alias :q="exit"
+alias xc="xcrysden"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -8,6 +9,8 @@ alias gvim="env GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME nvim"
 
 # For working with plugins
 alias pvim="nvim --cmd \"set rtp+=\"(pwd) ."
+
+alias fd="fdfind"
 
 # Sync my goodnotes folder, with verbose option using rclone
 alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes/'
@@ -35,6 +38,10 @@ function mountICM
     sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/MoTe2 $argv;
 end
 
+function mountICMmkoz
+    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mkoz/MoTe2 $argv;
+end
+
 function ok
  okular $argv &; 
 end
@@ -49,6 +56,8 @@ set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli
 set PATH /home/dominik/programs/arduino-ide_nightly-20210618_Linux_64bit $PATH
 
 set PATH /home/dominik/.cargo/bin $PATH
+
+set PATH /home/dominik/.local/bin $PATH
 
 set PATH /home/dominik/programs/qe-6.7/bin $PATH
 set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
@@ -67,7 +76,6 @@ set -x MANWIDTH 999
 set -x NVIM_LISTEN_ADDRESS /tmp/mynvimserver
 set --global hydro_color_pwd 00bcd4  
 
-bind \cc kill-whole-line repaint
 bind \cw history-search-backward
 bind \ch beginning-of-line
 

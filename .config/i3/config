@@ -7,6 +7,7 @@ font pango:DejaVu Sans Mono Nerd Font 11
 
 focus_follows_mouse no
 
+# border normal --- for titles
 for_window [class=".*"] border pixel 3
 client.focused #00C1FF #00C1FF #000088 #00C1FF
 
@@ -16,27 +17,26 @@ gaps outer 10
 hide_edge_borders smart_no_gaps
 
 # Set monitors properly 
-# exec --no-startup-id xrandr --output DisplayPort-0 --primary
-exec_always --no-startup-id xrandr --output DisplayPort-2 --left-of DisplayPort-0
-exec_always --no-startup-id xrandr --output DisplayPort-1 --right-of DisplayPort-0
-exec --no-startup-id xrandr --output HDMI-A-0 --off
+exec_always --no-startup-id xrandr --output DisplayPort-0 --auto --output DisplayPort-2 --auto --left-of DisplayPort-0 --output DisplayPort-1 --auto --right-of DisplayPort-0 --output HDMI-A-0 --off
 
 # Map caps to escape 
 exec_always setxkbmap -layout pl -option caps:escape         
 # not working right shift to right alt
 # exec_always xmodmap -e "keycode 62 = ISO_Level3_Shift"
 
+### Startup
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 # Launch composite window manager, for st opacity 
 exec_always --no-startup-id xrdb ~/.Xresources
 # exec --no-startup-id picom -b
 exec --no-startup-id megasync
-exec --no-startup-id brave-browser --password-store=gnome
 # Set baground image
 exec_always --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
 exec --no-startup-id spotify -name music
 # exec --no-startup-id discord
 exec --no-startup-id pavucontrol
+# Run ranger so you could use scratchpad shortcut
+exec --no-startup-id alacritty --title rangerTerm -e ranger
 
 # Change lock screen
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
@@ -44,14 +44,13 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 212121 --nofork
 exec --no-startup-id nm-applet
 
 bindsym $alt+Tab exec rofi -show window
-# Run ranger so you could use scratchpad shortcut
-exec --no-startup-id alacritty --title rangerTerm -e ranger
 bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
 bindsym $mod+g exec brave-browser --password-store=gnome
 bindsym $mod+Return exec alacritty
 
 # Floating windows
+for_window [floating] move position center
 for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable
 for_window [class="Anki"] floating enable
@@ -59,6 +58,10 @@ for_window [class="MEGAsync"] floating enable
 # for_window [class="Xcinit.tcl"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [title="rangerTerm"] floating enable
+for_window [title="Isosurface/Property-plane Controls"] floating enable
+for_window [title="Distance"] floating enable
+for_window [class="TkFDialog"] resize set 900 480
+# for_window [class="Org.gnome.Nautilus"] floating enable
 
 # Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshots/$(date)"

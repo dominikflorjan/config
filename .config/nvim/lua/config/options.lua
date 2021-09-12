@@ -47,8 +47,6 @@ opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
 
-opt.breakindent = true
-
 opt.undofile = true -- enable undofile
 
 opt.breakindent = true
