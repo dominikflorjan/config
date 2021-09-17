@@ -61,6 +61,7 @@ for_window [title="rangerTerm"] floating enable
 for_window [title="Isosurface/Property-plane Controls"] floating enable
 for_window [title="Distance"] floating enable
 for_window [class="TkFDialog"] resize set 900 480
+for_window [class="Gnome-calculator"] floating enable
 # for_window [class="Org.gnome.Nautilus"] floating enable
 
 # Screenshots

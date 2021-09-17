@@ -7,4 +7,4 @@ require('config.statusline')
 require('config.lsp')
 require('config.treesitter')
 require('config.completion')
-
+require('telescope').setup{ defaults = { file_ignore_patterns = {"dane"}}}
