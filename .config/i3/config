@@ -31,7 +31,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 # exec --no-startup-id picom -b
 exec --no-startup-id megasync
 # Set baground image
-exec --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
+exec_always --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
 exec --no-startup-id spotify -name music
 # exec --no-startup-id discord
 exec --no-startup-id pavucontrol
@@ -50,6 +50,7 @@ bindsym $mod+g exec brave-browser --password-store=gnome
 bindsym $mod+Return exec alacritty
 
 # Floating windows
+floating_maximum_size 1600 x 1200
 for_window [floating] move position center
 for_window [class="Gwyddion"] floating enable
 for_window [class="atomicJ-gui-AtomicJ"] floating enable

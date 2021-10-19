@@ -25,13 +25,12 @@ Plug 'mbbill/undotree'
 
 " NEOVIM LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'hrsh7th/nvim-compe'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'abecodes/tabout.nvim'
-
-Plug 'liuchengxu/vim-which-key'
 
 Plug 'folke/lua-dev.nvim'
 
@@ -62,16 +61,6 @@ let g:maplocalleader = ','
 
 " Load all lua files
 lua require("config")
-
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
-" compe setup
-inoremap <silent><expr> <C-l> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " Color scheme and change spelling highlight
 " colorscheme gruvbox
@@ -105,7 +94,7 @@ let g:vimtex_compiler_latexmk = {
             \ 'executable' : 'latexmk',
             \ 'hooks' : [],
             \ 'options' : [
-            \   '-pdflatex=lualatex',
+            \   '-pdflatex=pdflatex',
             \   '-verbose',
             \   '-file-line-error',
             \   '-synctex=1',
@@ -113,7 +102,7 @@ let g:vimtex_compiler_latexmk = {
             \ ],
             \}
 let g:tex_flavor='latex'
-let g:vimtex_syntax_conceal_default = 0
+" let g:vimtex_syntax_conceal_default = 0
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
