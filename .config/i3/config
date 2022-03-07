@@ -46,7 +46,7 @@ exec --no-startup-id nm-applet
 bindsym $alt+Tab exec rofi -show window
 bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
-bindsym $mod+g exec brave-browser --password-store=gnome
+bindsym $mod+g exec firefox --password-store=gnome
 bindsym $mod+Return exec alacritty
 
 # Floating windows

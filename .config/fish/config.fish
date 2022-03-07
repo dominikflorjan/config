@@ -39,7 +39,11 @@ function mountICM
 end
 
 function mountICMmkoz
-    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mkoz/MoTe2 $argv;
+    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mkoz $argv;
+end
+
+function mountICMmszary
+    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mszary $argv;
 end
 
 function ok
@@ -56,6 +60,7 @@ set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli
 set PATH /home/dominik/programs/arduino-ide_nightly-20210618_Linux_64bit $PATH
 
 set PATH /home/dominik/.cargo/bin $PATH
+set PATH /home/dominik/programs/ovito-basic-3.6.0-x86_64/bin $PATH
 
 set PATH /home/dominik/.local/bin $PATH
 
