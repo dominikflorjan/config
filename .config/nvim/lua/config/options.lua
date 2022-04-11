@@ -58,7 +58,7 @@ opt.formatoptions = opt.formatoptions
     - 'o' -- O and o doesnt't trigger comments NOT WORKING
     + 'c'
     + 'q'
-    + 'r' -- continue comments when pressing enter
+    -- + 'r' -- continue comments when pressing enter
 
 --Map blankline
 vim.g.indent_blankline_char = '┊'
