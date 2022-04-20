@@ -43,6 +43,9 @@ vim.api.nvim_set_keymap('i', ',', ',<c-g>u', {noremap = true})
 vim.api.nvim_set_keymap('n', 'H', '0', {noremap = true})
 vim.api.nvim_set_keymap('n', 'L', '$', {noremap = true})
 
+-- Remaps for markdown 
+vim.api.nvim_set_keymap('n', '<C-p>', ':MarkdownPreviewToggle<CR>', {noremap = true})
+
 -- " Remaps TO DO
 -- nnoremap <leader>y "+y
 -- vnoremap <leader>y "+y
