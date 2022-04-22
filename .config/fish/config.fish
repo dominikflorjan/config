@@ -67,12 +67,6 @@ set PATH /home/dominik/.local/bin $PATH
 set PATH /home/dominik/programs/qe-6.7/bin $PATH
 set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
 
-# Cuda on XPS
-set PATH /usr/local/cuda-11.2/bin $PATH
-set LD_LIBRARY_PATH /usr/local/cuda-11.2/lib64 $PATH
-set PATH /usr/local/cuda-11.1/bin $PATH
-set LD_LIBRARY_PATH /usr/local/cuda-11.1/lib64 $PATH
-
 ### Universal variables
 set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
@@ -87,5 +81,3 @@ bind \ch beginning-of-line
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
 # source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
-#
-source /opt/ros/noetic/share/rosbash/rosfish 
