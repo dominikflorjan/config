@@ -1,5 +1,5 @@
 -- Escape insert mode with kj
--- vim.api.nvim_set_keymap('i', 'kj', '<Esc>', {});
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {});
 
 -- Moving between splits
 vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', {noremap = true})

@@ -17,7 +17,7 @@ gaps outer 10
 hide_edge_borders smart_no_gaps
 
 # Set monitors properly 
-exec_always --no-startup-id xrandr --output DisplayPort-0 --auto --output DisplayPort-2 --auto --left-of DisplayPort-0 --output DisplayPort-1 --auto --right-of DisplayPort-0 --output HDMI-A-0 --off
+exec_always --no-startup-id xrandr --output DisplayPort-0 --auto --output DisplayPort-2 --auto --left-of DisplayPort-0 --output HDMI-A-0 --auto --right-of DisplayPort-0
 
 # Map caps to escape 
 exec_always setxkbmap -layout pl -option caps:escape         
@@ -31,7 +31,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 # exec --no-startup-id picom -b
 exec --no-startup-id megasync
 # Set baground image
-exec_always --no-startup-id feh --bg-scale --randomize $HOME/Pictures/wallpapers/*
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/*
 exec --no-startup-id spotify -name music
 # exec --no-startup-id discord
 exec --no-startup-id pavucontrol
@@ -46,7 +46,7 @@ exec --no-startup-id nm-applet
 bindsym $alt+Tab exec rofi -show window
 bindsym $mod+Shift+p exec alacritty --title rangerTerm -e ranger
 bindsym $alt+p exec nautilus
-bindsym $mod+g exec firefox --password-store=gnome
+bindsym $mod+g exec google-chrome --password-store=gnome
 bindsym $mod+Return exec alacritty
 
 # Floating windows

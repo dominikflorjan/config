@@ -69,6 +69,8 @@ let g:maplocalleader = ','
 " Load all lua files
 lua require("config")
 
+inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
+
 " Color scheme and change spelling highlight
 " Important!!
 if has('termguicolors')

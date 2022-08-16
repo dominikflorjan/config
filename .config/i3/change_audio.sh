@@ -15,9 +15,9 @@ current=$(pacmd list-sinks | grep '\* index' | cut -c 12)
 # 
 # $(pacmd set-default-sink $current)
 
-if [ $current == "1" ];
+if [ $current == "0" ];
 then 
     $(pacmd set-default-sink 2)
 else 
-    $(pacmd set-default-sink 1)
+    $(pacmd set-default-sink 0)
 fi
