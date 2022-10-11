@@ -68,6 +68,10 @@ set PATH /home/dominik/.local/bin $PATH
 set PATH /home/dominik/programs/qe-6.7/bin $PATH
 set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
 
+set PATH /home/dominik/orca $PATH
+set -x LD_LIBRARY_PATH /home/dominik/orca
+
+
 ### Universal variables
 set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'

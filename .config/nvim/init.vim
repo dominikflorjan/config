@@ -23,8 +23,11 @@ Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
 
 " NEOVIM LSP
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+
+
 Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -52,7 +55,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Look and feel
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'hzchirs/vim-material'
-Plug 'sainnhe/everforest'
 Plug 'morhetz/gruvbox'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -65,6 +67,7 @@ call plug#end()
 " Change leader key to spacebar
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
+
 
 " Load all lua files
 lua require("config")
@@ -79,7 +82,7 @@ endif
 set background=dark
 let g:material_style='palenight'
 let g:everforest_background = 'hard'
-colorscheme everforest
+colorscheme gruvbox
 hi Normal guibg=NONE ctermbg=NONE
 hi SpellBad cterm=underline
 
