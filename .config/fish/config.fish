@@ -39,6 +39,10 @@ function mountICM
     sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/MoTe2 $argv;
 end
 
+function mountTopola
+    sshfs dflorjan@login.icm.edu.pl:/lu/topola/home/dflorjan $argv;
+end
+
 function mountICMmkoz
     sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mkoz $argv;
 end
@@ -71,14 +75,25 @@ set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
 set PATH /home/dominik/orca $PATH
 set -x LD_LIBRARY_PATH /home/dominik/orca
 
+set PATH /home/dominik/opt/openmpi/bin $PATH
+set -x LD_LIBRARY_PATH /home/dominik/opt/openmpi/lib $PATH
+
+set PATH /home/dominik/mylammps/build/ $PATH
 
 ### Universal variables
 set -U EDITOR nvim
 set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
+## Number of threads for LAMMPS
+set -x OMP_NUM_THREADS 8
+
+## Nvim socket
 set -x NVIM_LISTEN_ADDRESS /tmp/mynvimserver
+
+
 set --global hydro_color_pwd 00bcd4  
+
 
 bind \cw history-search-backward
 bind \ch beginning-of-line

@@ -72,6 +72,7 @@ let g:maplocalleader = ','
 " Load all lua files
 lua require("config")
 
+" co to robi?
 inoremap <expr> <Tab> search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<Tab>'
 
 " Color scheme and change spelling highlight
@@ -137,4 +138,3 @@ let g:UltiSnipsListSnippets="<c-n>"
 let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit="/home/dominik/.vim/my_snips"
 let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/my_snips", "/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
-" let g:UltiSnipsSnippetDirectories=["/home/dominik/.vim/plugged/vim-snippets/UltiSnips"]
