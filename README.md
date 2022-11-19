@@ -12,24 +12,63 @@ config config --local status.showUntrackedFiles no
 config checkout
 ```
 
+## Alacritty 
+
+```
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty
+```
+
+Install rustup
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup override set stable
+rustup update stable
+```
+
+Install dependencies
+```
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+```
+
+Install alacritty
+```
+cargo build --release
+```
+
+Post install
+```
+infocmp alacritty
+
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo desktop-file-install extra/linux/Alacritty.desktop
+sudo update-desktop-database
+```
+
 ## Shell
 
-Using fish shell in urxvt with [tide](https://github.com/IlanCosman/tide) or [hydro](https://github.com/jorgebucaran/hydro) prompt
-
-Fish 3.2.0 is a must
-
-## Backlight control 
-
-use Light
-
-add user to videos group
+Using fish shell [tide](https://github.com/IlanCosman/tide) or [hydro](https://github.com/jorgebucaran/hydro) prompt
 ```
-sudo usermod -a -G video $USER
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install fish
+sudo chsh -s /usr/local/bin/fish
 ```
 
-## Vim
+## Neovim  
 
-Vim status bar needs powerline fonts and proper urxvt font set up
+Installing from source
+```
+git clone -b stable https://github.com/neovim/neovim
+cd neovim 
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+```
+
+## Powerline fonts
+
+Vim/Nvim status bar needs powerline fonts and proper terminal font set up
 
 ```console
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -39,17 +78,19 @@ cd ..
 rm -rf fonts
 ```
 
-## Install rclone
+
+
+## Install rclone 
 
 ```console
 curl linkhttps://rclone.org/install.sh | sudo bash
 ```
 
-## LSP support for neovim 
+## Backlight control for laptop
 
-neovim >= 0.5 for this to work
+use Light
 
-### python completion 
+add user to videos group
 ```
-sudo npm install -g pyright
+sudo usermod -a -G video $USER
 ```
