@@ -46,9 +46,15 @@ sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 ```
 
+Set alacritty as default terminal emulator
+```
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/alacritty 50
+sudo update-alternatives --config x-terminal-emulator
+```
+
 ## Shell
 
-Using fish shell [tide](https://github.com/IlanCosman/tide) or [hydro](https://github.com/jorgebucaran/hydro) prompt
+Using fish shell [tide](https://github.com/IlanCosman/tide) or [hydro](https://github.com/jorgebucaran/hydro) prompt.
 ```
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt-get update && sudo apt-get upgrade
@@ -56,9 +62,19 @@ sudo apt-get install fish
 sudo chsh -s /usr/local/bin/fish
 ```
 
+Fisher for plugin menagement
+```
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+```
+
+Tide prompt
+```
+fisher install IlanCosman/tide@v5
+```
+
 ## Neovim  
 
-Installing from source
+Installing from source:
 ```
 git clone -b stable https://github.com/neovim/neovim
 cd neovim 
@@ -66,9 +82,9 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 
-## Powerline fonts
+## Fonts
 
-Vim/Nvim status bar needs powerline fonts and proper terminal font set up
+Vim/Nvim status bar needs powerline fonts and proper terminal font set up.
 
 ```console
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -78,6 +94,8 @@ cd ..
 rm -rf fonts
 ```
 
+For glyphs to be working, [Nerd font](https://www.nerdfonts.com/font-downloads) needs to be installed.
+Alacritty uses DejaVuSansMono Nerd Font.
 
 
 ## Install rclone 
