@@ -1,6 +1,9 @@
 -- Escape insert mode with kj
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {});
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
 -- Moving between splits
 vim.api.nvim_set_keymap('n', '<leader>l', ':wincmd l<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>k', ':wincmd k<CR>', {noremap = true})
@@ -46,12 +49,15 @@ vim.api.nvim_set_keymap('n', 'L', '$', {noremap = true})
 -- Remaps for markdown 
 vim.api.nvim_set_keymap('n', '<C-p>', ':MarkdownPreviewToggle<CR>', {noremap = true})
 
--- " Remaps TO DO
--- nnoremap <leader>y "+y
--- vnoremap <leader>y "+y
--- nnoremap <leader>Y gg"+G
---
--- nnoremap <leader>d "_d
--- vnoremap <leader>d "_d
---
--- nnoremap <leader>sv :source /home/dominik/.config/nvim/init.vim<CR>
+
+-- In visual mode move highlighted lines up or down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
+
+-- Magma mappings
+vim.api.nvim_set_keymap('n', '<localleader>r', ':MagmaEvaluateOperator<CR>', {noremap=true, silent = true})
+vim.api.nvim_set_keymap('n', '<localleader>rr', ':MagmaEvaluateLine<CR>', {noremap=true, silent = true})
+vim.api.nvim_set_keymap('n', '<localleader>ro', ':MagmaShowOutput<CR>', {noremap=true, silent = true})
+
+

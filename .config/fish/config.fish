@@ -1,7 +1,8 @@
 alias vim="nvim"
 alias :q="exit"
 alias xc="xcrysden"
-alias python="python3"
+# alias python="python3"
+# alias pip="pip3"
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -19,7 +20,6 @@ alias sync_notes='rclone sync -v google_drive:GoodNotes/ /home/dominik/GoodNotes
 ### SSH with alacritty
 alias ssh='TERM=xterm-256color /usr/bin/ssh -X'
 
-alias pip="pip3"
 
 # Run Tensorrt docker image
 alias docker_nvidia='sudo docker run \
@@ -55,14 +55,14 @@ function ok
  okular $argv &; 
 end
 
-function mount_smb
-    sudo mount -t cifs -o username=serverUserName //myServerIpAdress/sharename $argv;
-end
+## Mounting home server
+# function mount_smb
+    # sudo mount -t cifs -o username=serverUserName //myServerIpAdress/sharename $argv;
+# end
 
 # Add to PATH 
-set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
+set PATH /usr/local/texlive/2022/bin/x86_64-linux $PATH
 set PATH /home/dominik/.vim/plugged/nvim-treesitter/node_modules/tree-sitter-cli $PATH
-set PATH /home/dominik/programs/arduino-ide_nightly-20210618_Linux_64bit $PATH
 
 set PATH /home/dominik/.cargo/bin $PATH
 set PATH /home/dominik/programs/ovito-basic-3.6.0-x86_64/bin $PATH
@@ -78,7 +78,9 @@ set -x LD_LIBRARY_PATH /home/dominik/orca
 set PATH /home/dominik/opt/openmpi/bin $PATH
 set -x LD_LIBRARY_PATH /home/dominik/opt/openmpi/lib $PATH
 
-set PATH /home/dominik/mylammps/build/ $PATH
+set PATH /home/dominik/programs/lammps/build/ $PATH
+
+set PATH /home/dominik/programs/q-e-qe-7.1/bin/ $PATH
 
 ### Universal variables
 set -U EDITOR nvim
