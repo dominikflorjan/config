@@ -4,7 +4,7 @@ alias xc="xcrysden"
 # alias python="python3"
 # alias pip="pip3"
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # For working with config repo (bare)
 alias gvim="env GIT_DIR=$HOME/.cfg GIT_WORK_TREE=$HOME nvim"

@@ -10,46 +10,42 @@ lsp.ensure_installed({
     'pyright'
 })
 
--- Old configuration without lsp-zero
--- local cmp = require 'cmp'
--- cmp.setup {
---   snippet = {
---     expand = function(args)
---         vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
---     end,
---   },
---   mapping = {
---     ['<C-p>'] = cmp.mapping.select_prev_item(),
---     ['<C-n>'] = cmp.mapping.select_next_item(),
---     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
---     ['<C-f>'] = cmp.mapping.scroll_docs(4),
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<C-e>'] = cmp.mapping.close(),
---     ['<C-y>'] = cmp.mapping.confirm {
---       behavior = cmp.ConfirmBehavior.Replace,
---       select = true,
---       -- Tab is not working properly so to test it out
---     },
---     ['<Tab>'] = vim.NIL,
---   },
---   sources = cmp.config.sources({
---     { name = 'nvim_lsp' },
---     { name = 'ultisnips' },
---   }),
--- }
+-- Function for luasnip tab mechanism
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 
 -- Lsp-zero nvim cmp configuration
+-- luasnip 
+local luasnip = require('luasnip')
 local cmp = require('cmp')
 
 lsp.setup_nvim_cmp({
     preselect = 'none',
     completion = {
-        completeopt = 'menu,menuone,noinsert,noselect'
+        completeopt = 'menu,menuone,noselect'
     },
     mapping = lsp.defaults.cmp_mappings({
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<Tab>'] = vim.NIL,
-        ['<S-Tab>'] = vim.NIL,
+        -- go to next placeholder in the snippet
+        ['<C-l>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(1) then
+                luasnip.jump(1)
+            else
+                fallback()
+            end
+        end, {'i', 's'}),
+        -- go to previous placeholder in the snippet
+        ['<C-d>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {'i', 's'}),
     })
 })
 
