@@ -1,0 +1,33 @@
+menu main on
+
+
+proc reset_viz {molid} {
+  # operate only on existing molecules
+  if {[lsearch [molinfo list] $molid] >= 0} {
+    # delete all representations
+    set numrep [molinfo $molid get numreps]
+    for {set i 0} {$i < $numrep} {incr i} {
+      mol delrep $i $molid
+    }
+    # add new representations
+    mol representation VDW
+    # add other representation stuff you want here
+    mol addrep $molid
+  } 
+}
+
+proc reset_viz_proxy {args} {
+  foreach {fname molid rw} $args {}
+  eval "after idle {reset_viz $molid}"
+}
+
+## put a trace on vmd_initialize_structure
+trace variable vmd_initialize_structure w reset_viz_proxy
+
+after idle {
+  if { 1 } {
+    foreach molid [molinfo list] {
+      reset_viz $molid
+    }
+  }
+}
