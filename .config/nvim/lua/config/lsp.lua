@@ -24,12 +24,9 @@ local luasnip = require('luasnip')
 local cmp = require('cmp')
 
 lsp.setup_nvim_cmp({
-    preselect = 'none',
-    completion = {
-        completeopt = 'menu,menuone,noselect'
-    },
     mapping = lsp.defaults.cmp_mappings({
         ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = vim.NIL,
         -- go to next placeholder in the snippet
         ['<C-l>'] = cmp.mapping(function(fallback)
             if luasnip.jumpable(1) then

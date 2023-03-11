@@ -36,7 +36,7 @@ alias docker_nvidia='sudo docker run \
             nvcr.io/nvidia/tensorrt:20.09-py3'
 
 function mountICM
-    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/MoTe2 $argv;
+    sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/ $argv;
 end
 
 function mountTopola
@@ -88,7 +88,9 @@ set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
 ## Number of threads for LAMMPS
-set -x OMP_NUM_THREADS 8
+set -x OMP_NUM_THREADS 4
+
+set -x LAMMPS_POTENTIALS /home/dominik/programs/lammps/potentials/
 
 ## Nvim socket
 set -x NVIM_LISTEN_ADDRESS /tmp/mynvimserver

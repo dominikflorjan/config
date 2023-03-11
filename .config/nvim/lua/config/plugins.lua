@@ -62,11 +62,12 @@ return require('packer').startup(function(use)
 
     -- Snippets
     use({
-        'L3MON4D3/LuaSnip',
-        -- install jsregexp (optional!:).
-        run = "make install_jsregexp"
+        'L3MON4D3/LuaSnip'
     })
 
     -- Git integration
     use 'tpope/vim-fugitive'
+
+    -- LAMMPS syntax highlighting???
+    use 'tommason14/lammps.vim'
 end)
