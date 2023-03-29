@@ -88,7 +88,7 @@ set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
 ## Number of threads for LAMMPS
-set -x OMP_NUM_THREADS 4
+set -x OMP_NUM_THREADS 1
 
 set -x LAMMPS_POTENTIALS /home/dominik/programs/lammps/potentials/
 
