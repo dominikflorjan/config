@@ -2,7 +2,7 @@ alias vim="nvim"
 alias :q="exit"
 alias xc="xcrysden"
 # alias python="python3"
-# alias pip="pip3"
+alias pip="pip3"
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -69,18 +69,18 @@ set PATH /home/dominik/programs/ovito-basic-3.6.0-x86_64/bin $PATH
 
 set PATH /home/dominik/.local/bin $PATH
 
-set PATH /home/dominik/programs/qe-6.7/bin $PATH
+set PATH /home/dominik/programs/qe-6.7-ReleasePack/qe-6.7/bin/ $PATH
 set PATH /home/dominik/programs/xcrysden-1.6.2-bin-shared/ $PATH
 
 set PATH /home/dominik/orca $PATH
 set -x LD_LIBRARY_PATH /home/dominik/orca
 
-set PATH /home/dominik/opt/openmpi/bin $PATH
-set -x LD_LIBRARY_PATH /home/dominik/opt/openmpi/lib $PATH
+#set PATH /home/dominik/opt/openmpi/bin $PATH
+# set -x LD_LIBRARY_PATH /home/dominik/opt/openmpi/lib $PATH
 
 set PATH /home/dominik/programs/lammps/build/ $PATH
 
-set PATH /home/dominik/programs/q-e-qe-7.1/bin/ $PATH
+# set PATH /home/dominik/programs/q-e-qe-7.1/bin/ $PATH
 
 ### Universal variables
 set -U EDITOR nvim
@@ -88,7 +88,7 @@ set -x MANPAGER 'nvim +Man!'
 set -x MANWIDTH 999
 
 ## Number of threads for LAMMPS
-set -x OMP_NUM_THREADS 1
+set -x OMP_NUM_THREADS 2
 
 set -x LAMMPS_POTENTIALS /home/dominik/programs/lammps/potentials/
 
@@ -105,3 +105,11 @@ bind \ch beginning-of-line
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
 # source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/dominik/anaconda3/bin/conda
+    eval /home/dominik/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+
