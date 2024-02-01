@@ -104,7 +104,6 @@ bind \ch beginning-of-line
 
 # Fix not workign ctrl+f for autocmpletion, -M stands for mode and insert is for vi mode
 bind -M insert \cf forward-char
-# source "$HOME/anaconda3/etc/fish/conf.d/conda.fish"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -113,3 +112,5 @@ if test -f /home/dominik/anaconda3/bin/conda
 end
 # <<< conda initialize <<<
 
+
+set PATH /usr/bin $PATH

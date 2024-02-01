@@ -5,7 +5,7 @@
 --
 lvim.leader = "space"
 --
-lvim.colorscheme = "onedark"
+lvim.colorscheme = "default"
 --
 lvim.plugins = {
   { "tommason14/lammps.vim" },
