@@ -5,9 +5,15 @@
 --
 lvim.leader = "space"
 --
-lvim.colorscheme = "default"
+lvim.colorscheme = "codemonkey"
 --
 lvim.plugins = {
   { "tommason14/lammps.vim" },
-  {"lunarvim/colorschemes"}
+  {"lunarvim/colorschemes"},
+  {"lervag/vimtex"},
+  {
+  "ray-x/lsp_signature.nvim",
+  event = "BufRead",
+  config = function() require"lsp_signature".on_attach() end,
+  },
 }

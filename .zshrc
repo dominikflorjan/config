@@ -87,11 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='lvim'
+else
+  export EDITOR='lvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -101,6 +101,32 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# aliases
+alias zshconfig="lvim ~/.zshrc"
+alias ohmyzsh="lvim ~/.oh-my-zsh"
+alias xc="xcrysden"
+alias :q="exit"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias vim="lvim"
+
+# My aliases with arguments
+mountICM() {
+  sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/ $1;
+}
+
+mountTopola() {
+    sshfs dflorjan@login.icm.edu.pl:/lu/topola/home/dflorjan $1;
+}
+
+### PATH 
+export PATH=/home/dominik/.local/bin:$PATH
+export PATH=/home/dominik/programs/lammps_gpu/build:$PATH
+export PATH=/home/dominik/programs/xcrysden-1.6.2-bin-shared:$PATH
+export PATH=/home/dominik/programs/qe-6.7-ReleasePack/qe-6.7/bin:$PATH
+export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
+
+
+
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
