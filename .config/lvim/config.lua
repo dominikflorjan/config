@@ -18,6 +18,12 @@ lvim.plugins = {
   event = "BufRead",
   config = function() require"lsp_signature".on_attach() end,
   },
+  { "evesdropper/luasnip-latex-snippets.nvim" },
+  {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {},
+},
 }
 
 vim.g.vimtex_compiler_latexmk = {
@@ -36,3 +42,15 @@ ls = require("luasnip")
 ls.config.set_config({
   enable_autosnippets = true,
 })
+
+
+-- New Luasnip keybinds so to not use tab
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})
