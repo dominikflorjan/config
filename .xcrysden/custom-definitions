@@ -119,16 +119,17 @@ set system(c95_exist) 0
 # Example:
 #
 # set atmCol(1) {0.5 0.5 0.5};   # custom color for Hydrogen
-# set atmCol(8) {0.0 1.0 0.0};   # custom color for Oxygen
-set atmCol(6) {1.0 1.0 0.1};     # C
-set atmCol(13) {0.9 0.2 1};      # Al
+# set atmCol(13) {0.9 0.2 1};      # Al
 # set atmCol(14) {0.4 1 1};        # Si
 # set atmCol(15) {0.95 0.95 0.05}; # P
-set atmCol(42) {0.0 0.75 0.75};    # Mo
+set atmCol(5) {0.1 0.9 0.1};     # B - green
+set atmCol(6) {0.3 0.3 0.3};     # C - dark grey
+set atmCol(8) {1.0 0.0 0.0};   # Oxygen - red
+set atmCol(42) {0.7 0.7 0.7};    # Mo - light grey 
 set atmCol(49) {1.0 0.0 1.0};       # In
 set atmCol(50) {1.0 0.3 1.0};       # Sn
 set atmCol(51) {1.0 0.6 1.0};       # Sb
-set atmCol(52) {0.75 0.75 0.0};    # Te
+set atmCol(52) {1.0 0.75 0.0};    # Te - Orange
 set atmCol(53) {1.0 0.9 1.0};       # I 
 set atmCol(81) {0.3 1.0 1.0};       # Tl
 set atmCol(82) {0.6 1.0 1.0};      # Pb
@@ -305,7 +306,7 @@ set myParam(BACKGROUND) {1.00 1.00 1.00}
 #set myParam(FS_SOLIDCELLCOLOR)  {0.00 0.95 0.95 0.40}
 
 ## use antialiaing: 0 | 1
-#set myParam(FS_ANTIALIAS)      0 
+set myParam(FS_ANTIALIAS)      1
 
 ## use depth cuing: 0 | 1
 #set myParam(FS_DEPTHCUING)     0 

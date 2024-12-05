@@ -10,9 +10,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 
- eval "$(oh-my-posh init zsh)"
-# eval "$(oh-my-posh init zsh --config ~/.local/bin/oh-my-posh/themes/jandedobbeleer.omp.json)"
-
+# OH MY POSH 
+# eval "$(oh-my-posh init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/atomic.omp.json)"
+# eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/atomic.omp.json')"
+# eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/catppuccin.omp.json')"
+#
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -88,9 +91,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 else
-  export EDITOR='lvim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -101,17 +104,35 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# aliases
-alias zshconfig="lvim ~/.zshrc"
-alias ohmyzsh="lvim ~/.oh-my-zsh"
+# kitty ssh fix
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh" aliases
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias vimconfig='nvim ~/.config/nvim/init.lua'
 alias xc="xcrysden"
 alias :q="exit"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias vim="lvim"
+alias vim="nvim"
+alias cd="z"
+alias python="python3"
+
+alias syncPiotr='rsync -avu --exclude "files" --exclude "*JOB*" --exclude "core" ~/Documents/icm/radomski/Intercalation_CO_CO2_MoS2/ ~/MEGA/Perla_Nauki/Intercalation/RadomskiMoS2 --exclude "*wfc*" --exclude "*old*" --exclude "*pbe*" --exclude "*outdir*"'
 
 # My aliases with arguments
 mountICM() {
   sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/dflorjan/ $1;
+}
+
+mountICMSzary() {
+  sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/mszary/ $1;
+}
+
+mountICMPiotr() {
+  sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/radomski/ $1;
+}
+
+mountICMBabel() {
+  sshfs dflorjan@login.icm.edu.pl:/lu/tetyda/home/babel/ $1;
 }
 
 mountTopola() {
@@ -119,14 +140,29 @@ mountTopola() {
 }
 
 ### PATH 
+export PATH=/usr/local/bin:$PATH
 export PATH=/home/dominik/.local/bin:$PATH
 export PATH=/home/dominik/programs/lammps_gpu/build:$PATH
 export PATH=/home/dominik/programs/xcrysden-1.6.2-bin-shared:$PATH
-export PATH=/home/dominik/programs/qe-6.7-ReleasePack/qe-6.7/bin:$PATH
+export PATH=/home/dominik/programs/qe-7.3.1/build/bin/:$PATH
 export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
+export PATH=/home/dominik/programs/ovito-basic-3.10.6-x86_64/:$PATH
+export LAMMPS_POTENTIALS=/home/dominik/programs/lammps_gpu/potentials/
 
-
-
+# Moletemplate
+export PATH=$PATH:$HOME/programs/moltemplate/moltemplate
+export PATH=$PATH:$HOME/programs/moltemplate/moltemplate/scripts
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+export LAMMPS_PYTHON_TOOLS=/home/dominik/programs/lammps/tools/python/pizza/
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# ORCA 6.0.0 secion
+export PATH=/home/dominik/orca_6_0_0:$PATH
+
