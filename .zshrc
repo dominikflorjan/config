@@ -146,7 +146,7 @@ export PATH=/home/dominik/programs/lammps_gpu/build:$PATH
 export PATH=/home/dominik/programs/xcrysden-1.6.2-bin-shared:$PATH
 export PATH=/home/dominik/programs/qe-7.3.1/build/bin/:$PATH
 export PATH=/usr/local/texlive/2022/bin/x86_64-linux:$PATH
-export PATH=/home/dominik/programs/ovito-basic-3.10.6-x86_64/:$PATH
+export PATH=/home/dominik/programs/ovito-basic-3.10.6-x86_64/bin/:$PATH
 export LAMMPS_POTENTIALS=/home/dominik/programs/lammps_gpu/potentials/
 
 # Moletemplate

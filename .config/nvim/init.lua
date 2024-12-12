@@ -943,9 +943,9 @@ require("lazy").setup({
 	{ -- LATEX
 		"lervag/vimtex",
 	},
-	{ -- LAMMPS syntax highlight
-		"tommason14/lammps.vim",
-	},
+	-- { -- LAMMPS syntax highlight
+	-- 	"tommason14/lammps.vim",
+	-- },
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
